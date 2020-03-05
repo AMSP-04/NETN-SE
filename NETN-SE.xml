@@ -49,7 +49,7 @@ Copyright © 2019 by NATO/OTAN. All rights reserved.
 This work is licensed under a Creative Commons Attribution-NoDerivatives 4.0 International License.
 
 Above license gives you the right to use and redistribute the NETN FOM Module (XML file and Documentation) in its entirety without modification. You are also allowed to develop your own new FOM Modules (in separate XML files and separate documentation) that build-on/extends the NETN module by reference. You are NOT allowed to modify the NETN FOM Module or its documentation without prior permission by the NATO Modelling and Simulation Group.</other>
-        <glyph type="" alt=""/>
+        <glyph type="" alt=""></glyph>
     </modelIdentification>
     <objects>
         <objectClass>
@@ -61,7 +61,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
  
 Optional, default empty string.</semantics>
                 <attribute>
-                    <name>UniqueID</name>
+                    <name>UniqueId</name>
                     <dataType>UuidArrayOfHLAbyte16</dataType>
                     <updateType>Static</updateType>
                     <updateCondition>NA</updateCondition>
@@ -196,14 +196,12 @@ Optional, default empty string.</semantics>
                     <sharing>PublishSubscribe</sharing>
                     <semantics>A point where aggregate and physical entities shall stop and wait a specified time. 
 The modelling federate shall register a NETN_GeoObject.Point instance to model the CheckPoint when establish a new CheckPoint. Set the attribute LocationReferenced to the Point instance . 
-
+ 
 The attribute Status shall be ActiveStatusEnum8.Active when the CheckPoint is operated. 
  
 The modelling federate of an active CheckPoint shall send a NETN-ETR Wait interaction wiith the time to wait and with a reference to the entity that will pass the CheckPoint. 
  
-The modelling federate of the CheckPoint decides if the entity will pass the CheckPoint or not, e.g. can the distance between the CheckPoint and the entity be the triggering cause.
- 
-</semantics>
+The modelling federate of the CheckPoint decides if the entity will pass the CheckPoint or not, e.g. can the distance between the CheckPoint and the entity be the triggering cause.</semantics>
                     <attribute>
                         <name>DelayTime</name>
                         <dataType>TimeSecondInteger32</dataType>
@@ -273,7 +271,7 @@ Required.</semantics>
                     <semantics>A path with a least two points, describing e.g. a sea-lane or ground route.</semantics>
                     <attribute>
                         <name>Points</name>
-                        <dataType>ArrayOfWorldLocationStruct2</dataType>
+                        <dataType>GeocentricPath</dataType>
                         <updateType>Conditional</updateType>
                         <updateCondition>When Changed</updateCondition>
                         <ownership>NoTransfer</ownership>
@@ -338,26 +336,39 @@ The lower elevation is defined by the polygon (list with geocentric points).</se
                 </enumerator>
             </enumeratedData>
             <enumeratedData>
-                <name>PointTypeDiscriminantEnum32</name>
+                <name>PathTypeEnum32</name>
                 <representation>HLAinteger32BE</representation>
-                <semantics>Specifies the type of Points used in the polygon.</semantics>
+                <semantics>Specifies if the path is the actual path with waypoints or if it is a reference to registred NETN_GeoObject.Path through a UUID.</semantics>
                 <enumerator>
-                    <name>GeoCentric</name>
-                    <value>1</value>
+                    <name>PathObject</name>
+                    <value>0</value>
                 </enumerator>
                 <enumerator>
-                    <name>NamedPoints</name>
-                    <value>2</value>
+                    <name>UuidReference</name>
+                    <value>1</value>
+                </enumerator>
+            </enumeratedData>
+            <enumeratedData>
+                <name>PointTypeEnum32</name>
+                <representation>HLAinteger32BE</representation>
+                <semantics>Specifies if the point is the actual location or if it is a reference to registred NETN_GeoObject.Point through a UUID.</semantics>
+                <enumerator>
+                    <name>Location</name>
+                    <value>0</value>
+                </enumerator>
+                <enumerator>
+                    <name>UuidReference</name>
+                    <value>1</value>
                 </enumerator>
             </enumeratedData>
         </enumeratedDataTypes>
         <arrayDataTypes>
             <arrayData>
-                <name>ArrayOfWorldLocationStruct2</name>
+                <name>ArrayOfWorldLocationStruct</name>
                 <dataType>WorldLocationStruct</dataType>
-                <cardinality>[2..2147483647]</cardinality>
+                <cardinality>Dynamic</cardinality>
                 <encoding>HLAvariableArray</encoding>
-                <semantics>A polygonal chain with size &gt;= 2.</semantics>
+                <semantics>A polygonal chain with geoentric points, may be empty.</semantics>
             </arrayData>
         </arrayDataTypes>
         <fixedRecordDataTypes>
@@ -376,21 +387,6 @@ The lower elevation is defined by the polygon (list with geocentric points).</se
                     <semantics>The radius of the circle.</semantics>
                 </field>
             </fixedRecordData>
-            <fixedRecordData>
-                <name>NamedPoint</name>
-                <encoding>HLAfixedRecord</encoding>
-                <semantics>A point with location and name.</semantics>
-                <field>
-                    <name>Location</name>
-                    <dataType>WorldLocationStruct</dataType>
-                    <semantics>Specifies the geocentric position.</semantics>
-                </field>
-                <field>
-                    <name>Name</name>
-                    <dataType>HLAunicodeString</dataType>
-                    <semantics>Name of the point, default is an empty string.</semantics>
-                </field>
-            </fixedRecordData>
         </fixedRecordDataTypes>
         <variantRecordDataTypes>
             <variantRecordData>
@@ -400,7 +396,7 @@ The lower elevation is defined by the polygon (list with geocentric points).</se
                 <alternative>
                     <enumerator>Polygon</enumerator>
                     <name>Polygon</name>
-                    <dataType>ArrayOfWorldLocationStruct3</dataType>
+                    <dataType>GeocentricPolygon</dataType>
                     <semantics>A closed polygonal chain that defines the area. The first and last point coincides.</semantics>
                 </alternative>
                 <alternative>
@@ -411,6 +407,46 @@ The lower elevation is defined by the polygon (list with geocentric points).</se
                 </alternative>
                 <encoding>HLAvariantRecord</encoding>
                 <semantics>Defines the BaseStruct.</semantics>
+            </variantRecordData>
+            <variantRecordData>
+                <name>PathVariantStruct</name>
+                <discriminant>PathReference</discriminant>
+                <dataType>PathTypeEnum32</dataType>
+                <alternative>
+                    <enumerator>PathObject</enumerator>
+                    <name>Waypoints</name>
+                    <dataType>ArrayOfWorldLocationStruct</dataType>
+                    <semantics>The path defined by waypoints, not necessarily registered in the federation execution as a NETN_GeoObject.Path. 
+ 
+The array can be empty (size=0).</semantics>
+                </alternative>
+                <alternative>
+                    <enumerator>UuidReference</enumerator>
+                    <name>UUID</name>
+                    <dataType>UuidArrayOfHLAbyte16</dataType>
+                    <semantics>A UUID that referes to a NETN_GeoObject.Path that is registred iin the federation execution.</semantics>
+                </alternative>
+                <encoding>HLAvariantRecord</encoding>
+                <semantics>Defines the path, either as a polygonal chain or a UUID that refers to a in the federation execution registred NETN_GeoObject.Path.</semantics>
+            </variantRecordData>
+            <variantRecordData>
+                <name>PointVariantStruct</name>
+                <discriminant>PointReference</discriminant>
+                <dataType>PointTypeEnum32</dataType>
+                <alternative>
+                    <enumerator>Location</enumerator>
+                    <name>Location</name>
+                    <dataType>WorldLocationStruct</dataType>
+                    <semantics>The geocentric location.</semantics>
+                </alternative>
+                <alternative>
+                    <enumerator>UuidReference</enumerator>
+                    <name>UUID</name>
+                    <dataType>UuidArrayOfHLAbyte16</dataType>
+                    <semantics>A UUID that refers to a NETN_GeoObject.Point.</semantics>
+                </alternative>
+                <encoding>HLAvariantRecord</encoding>
+                <semantics>Defines the point, either a Location or a UUID reference to a NETN_GeoObject.Point.</semantics>
             </variantRecordData>
         </variantRecordDataTypes>
     </dataTypes>
