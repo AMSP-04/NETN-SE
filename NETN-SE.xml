@@ -44,6 +44,10 @@ A NETN_Facility object class to define facilities for different services.</descr
             <type>Dependency</type>
             <identification>NETN-BASE</identification>
         </reference>
+        <reference>
+            <type>Dependency</type>
+            <identification>RPR-SE</identification>
+        </reference>
         <other>
 Copyright © 2019 by NATO/OTAN. All rights reserved.
 This work is licensed under a Creative Commons Attribution-NoDerivatives 4.0 International License.
