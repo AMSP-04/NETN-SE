@@ -3,8 +3,8 @@
     <modelIdentification>
         <name>NETN-SE</name>
         <type>FOM</type>
-        <version>1.0 (RC 1)</version>
-        <modificationDate>2020-02-25</modificationDate>
+        <version>1.0.0 (Baseline MAR 2020)</version>
+        <modificationDate>2020-03-18</modificationDate>
         <securityClassification>Not Classified</securityClassification>
         <purpose>Define synthetic environment objects in a HLA Federation Execution.</purpose>
         <applicationDomain>Simulation, Training</applicationDomain>
@@ -128,7 +128,7 @@ Optional.</semantics>
 Optional.</semantics>
                 </attribute>
                 <attribute>
-                    <name>ObjectIdentifier</name>
+                    <name>ObjectId</name>
                     <dataType>EntityIdentifierStruct</dataType>
                     <updateType>Static</updateType>
                     <updateCondition>Initial</updateCondition>
@@ -142,7 +142,7 @@ EventNumber can be zero (0) or increasing starting from one (1).
 Optional.</semantics>
                 </attribute>
                 <attribute>
-                    <name>ForceIdentifier</name>
+                    <name>ForceId</name>
                     <dataType>ForceIdentifierEnum8</dataType>
                     <updateType>Conditional</updateType>
                     <updateCondition>When Changed</updateCondition>
@@ -321,134 +321,10 @@ The lower elevation is defined by the polygon (list with geocentric points).</se
     </objects>
     <dataTypes>
         <simpleDataTypes/>
-        <enumeratedDataTypes>
-            <enumeratedData>
-                <name>AreaDiscriminantEnum32</name>
-                <representation>HLAinteger32BE</representation>
-                <semantics>Specifies if the area is a polygon or a circle.</semantics>
-                <enumerator>
-                    <name>Polygon</name>
-                    <value>1</value>
-                </enumerator>
-                <enumerator>
-                    <name>Circle</name>
-                    <value>2</value>
-                </enumerator>
-            </enumeratedData>
-            <enumeratedData>
-                <name>PathTypeEnum32</name>
-                <representation>HLAinteger32BE</representation>
-                <semantics>Specifies if the path is the actual path with waypoints or if it is a reference to registred NETN_GeoObject.Path through a UUID.</semantics>
-                <enumerator>
-                    <name>PathObject</name>
-                    <value>0</value>
-                </enumerator>
-                <enumerator>
-                    <name>UuidReference</name>
-                    <value>1</value>
-                </enumerator>
-            </enumeratedData>
-            <enumeratedData>
-                <name>PointTypeEnum32</name>
-                <representation>HLAinteger32BE</representation>
-                <semantics>Specifies if the point is the actual location or if it is a reference to registred NETN_GeoObject.Point through a UUID.</semantics>
-                <enumerator>
-                    <name>Location</name>
-                    <value>0</value>
-                </enumerator>
-                <enumerator>
-                    <name>UuidReference</name>
-                    <value>1</value>
-                </enumerator>
-            </enumeratedData>
-        </enumeratedDataTypes>
-        <arrayDataTypes>
-            <arrayData>
-                <name>ArrayOfWorldLocationStruct</name>
-                <dataType>WorldLocationStruct</dataType>
-                <cardinality>Dynamic</cardinality>
-                <encoding>HLAvariableArray</encoding>
-                <semantics>A polygonal chain with geoentric points, may be empty.</semantics>
-            </arrayData>
-        </arrayDataTypes>
-        <fixedRecordDataTypes>
-            <fixedRecordData>
-                <name>CircleStruct</name>
-                <encoding>HLAfixedRecord</encoding>
-                <semantics>Circle</semantics>
-                <field>
-                    <name>Location</name>
-                    <dataType>WorldLocationStruct</dataType>
-                    <semantics>Origo.</semantics>
-                </field>
-                <field>
-                    <name>Radius</name>
-                    <dataType>MeterFloat32</dataType>
-                    <semantics>The radius of the circle.</semantics>
-                </field>
-            </fixedRecordData>
-        </fixedRecordDataTypes>
-        <variantRecordDataTypes>
-            <variantRecordData>
-                <name>AreaVariantStruct</name>
-                <discriminant>AreaDiscriminant</discriminant>
-                <dataType>AreaDiscriminantEnum32</dataType>
-                <alternative>
-                    <enumerator>Polygon</enumerator>
-                    <name>Polygon</name>
-                    <dataType>GeocentricPolygon</dataType>
-                    <semantics>A closed polygonal chain that defines the area. The first and last point coincides.</semantics>
-                </alternative>
-                <alternative>
-                    <enumerator>Circle</enumerator>
-                    <name>Circle</name>
-                    <dataType>CircleStruct</dataType>
-                    <semantics>A circle that defines the area.</semantics>
-                </alternative>
-                <encoding>HLAvariantRecord</encoding>
-                <semantics>Defines the BaseStruct.</semantics>
-            </variantRecordData>
-            <variantRecordData>
-                <name>PathVariantStruct</name>
-                <discriminant>PathReference</discriminant>
-                <dataType>PathTypeEnum32</dataType>
-                <alternative>
-                    <enumerator>PathObject</enumerator>
-                    <name>Waypoints</name>
-                    <dataType>ArrayOfWorldLocationStruct</dataType>
-                    <semantics>The path defined by waypoints, not necessarily registered in the federation execution as a NETN_GeoObject.Path. 
- 
-The array can be empty (size=0).</semantics>
-                </alternative>
-                <alternative>
-                    <enumerator>UuidReference</enumerator>
-                    <name>UUID</name>
-                    <dataType>UuidArrayOfHLAbyte16</dataType>
-                    <semantics>A UUID that referes to a NETN_GeoObject.Path that is registred iin the federation execution.</semantics>
-                </alternative>
-                <encoding>HLAvariantRecord</encoding>
-                <semantics>Defines the path, either as a polygonal chain or a UUID that refers to a in the federation execution registred NETN_GeoObject.Path.</semantics>
-            </variantRecordData>
-            <variantRecordData>
-                <name>PointVariantStruct</name>
-                <discriminant>PointReference</discriminant>
-                <dataType>PointTypeEnum32</dataType>
-                <alternative>
-                    <enumerator>Location</enumerator>
-                    <name>Location</name>
-                    <dataType>WorldLocationStruct</dataType>
-                    <semantics>The geocentric location.</semantics>
-                </alternative>
-                <alternative>
-                    <enumerator>UuidReference</enumerator>
-                    <name>UUID</name>
-                    <dataType>UuidArrayOfHLAbyte16</dataType>
-                    <semantics>A UUID that refers to a NETN_GeoObject.Point.</semantics>
-                </alternative>
-                <encoding>HLAvariantRecord</encoding>
-                <semantics>Defines the point, either a Location or a UUID reference to a NETN_GeoObject.Point.</semantics>
-            </variantRecordData>
-        </variantRecordDataTypes>
+        <enumeratedDataTypes/>
+        <arrayDataTypes/>
+        <fixedRecordDataTypes/>
+        <variantRecordDataTypes/>
     </dataTypes>
     <notes/>
 </objectModel>

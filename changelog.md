@@ -11,3 +11,6 @@ Moved Enum PathTypeEnum32 at NETN-ETR to NETN-SE
 Moved HLAvariantRecord PathVariantStruct at NETN-ETR to NETN-SE
 Moved Enum PointTypeEnum32 at NETN-ETR to NETN-SE
 Moved HLAvariantRecord PointVariantStruct at NETN-ETR to NETN-SE
+
+2020-03-18 - LO:
+Moved datatypes to NETN-BASE
