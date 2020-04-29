@@ -46,7 +46,7 @@ Version numbering of this FOM Module and associated documentation is based on th
 
 |Version|Description|
 |---|---|
-|v 1.0.0 (RC1) |Initial release of NETN SE FOM Module based on MSDL and Viking Computer Assisted eXercise (CAX).|
+|v 1.0 |Initial release of NETN SE FOM Module based on MSDL and Viking Computer Assisted eXercise (CAX).|
 
 [Changelog](changelog.md)
 

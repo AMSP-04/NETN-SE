@@ -3,8 +3,8 @@
     <modelIdentification>
         <name>NETN-SE</name>
         <type>FOM</type>
-        <version>1.0.0 (Baseline MAR 2020)</version>
-        <modificationDate>2020-03-18</modificationDate>
+        <version>1.0</version>
+        <modificationDate>2020-04-28</modificationDate>
         <securityClassification>Not Classified</securityClassification>
         <purpose>Define synthetic environment objects in a HLA Federation Execution.</purpose>
         <applicationDomain>Simulation, Training</applicationDomain>
@@ -49,7 +49,7 @@ A NETN_Facility object class to define facilities for different services.</descr
             <identification>RPR-SE</identification>
         </reference>
         <other>
-Copyright © 2019 by NATO/OTAN. All rights reserved.
+Copyright © 2020 by NATO/OTAN. All rights reserved.
 This work is licensed under a Creative Commons Attribution-NoDerivatives 4.0 International License.
 
 Above license gives you the right to use and redistribute the NETN FOM Module (XML file and Documentation) in its entirety without modification. You are also allowed to develop your own new FOM Modules (in separate XML files and separate documentation) that build-on/extends the NETN module by reference. You are NOT allowed to modify the NETN FOM Module or its documentation without prior permission by the NATO Modelling and Simulation Group.</other>
