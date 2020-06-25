@@ -11,14 +11,12 @@ The specification is based on IEEE 1516 High Level Architecture (HLA) Object Mod
 
 ### Purpose
 
-The NETN-SE FOM Module provides a common standard interface for the representation ...
+The NETN-SE FOM Module provides a common standard interface for representing persistent abstact geographical objects that can be (re-)used and referenced for specifying locations, paths, areas and volumes. The module also include the representation of facilities with a function or capability to perform activities.
 
 ### Scope
 
-- ...
-- ...
-  - ...
-
+- Checkpoint Facility
+- Point, Path, Area and Volume 
 
 ## Fundamentals
 

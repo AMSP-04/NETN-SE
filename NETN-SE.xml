@@ -4,7 +4,7 @@
         <name>NETN-SE</name>
         <type>FOM</type>
         <version>1.0</version>
-        <modificationDate>2020-04-28</modificationDate>
+        <modificationDate>2020-06-22</modificationDate>
         <securityClassification>Not Classified</securityClassification>
         <purpose>Define synthetic environment objects in a HLA Federation Execution.</purpose>
         <applicationDomain>Simulation, Training</applicationDomain>
@@ -61,9 +61,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
             <objectClass>
                 <name>NETN_Facility</name>
                 <sharing>PublishSubscribe</sharing>
-                <semantics>Base class for NETN Syntetical Environment object classes. 
- 
-Optional, default empty string.</semantics>
+                <semantics>Base class for NETN Syntetical Environment object classes. </semantics>
                 <attribute>
                     <name>UniqueId</name>
                     <dataType>UuidArrayOfHLAbyte16</dataType>
@@ -73,11 +71,18 @@ Optional, default empty string.</semantics>
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>The unique identifier of the object. 
-Required value. 
-If not assigned by the ORBAT specification or similar, shall a value be assigned, either randomized or generated from the Marking or EntityIdentifier attribute value. 
- 
-Required.</semantics>
+                    <semantics>Required: Pre-defined or generated unique identifier of the object instance.</semantics>
+                </attribute>
+                <attribute>
+                    <name>LocationReference</name>
+                    <dataType>UuidArrayOfHLAbyte16</dataType>
+                    <updateType>Static</updateType>
+                    <updateCondition>Initial</updateCondition>
+                    <ownership>NoTransfer</ownership>
+                    <sharing>PublishSubscribe</sharing>
+                    <transportation>HLAreliable</transportation>
+                    <order>Receive</order>
+                    <semantics>Required: A reference to a GeoObject or NETN sub-class of a RPR BaseEntity leaf node.</semantics>
                 </attribute>
                 <attribute>
                     <name>Name</name>
@@ -88,9 +93,18 @@ Required.</semantics>
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>Name of the object. 
- 
-Optional.</semantics>
+                    <semantics>Optional: Name of the object.</semantics>
+                </attribute>
+                <attribute>
+                    <name>ForceId</name>
+                    <dataType>ForceIdentifierEnum8</dataType>
+                    <updateType>Conditional</updateType>
+                    <updateCondition>When Changed</updateCondition>
+                    <ownership>NoTransfer</ownership>
+                    <sharing>PublishSubscribe</sharing>
+                    <transportation>HLAreliable</transportation>
+                    <order>Receive</order>
+                    <semantics>Optional: The force that operates the Facility. Default is 0 (Other).</semantics>
                 </attribute>
                 <attribute>
                     <name>Status</name>
@@ -101,9 +115,7 @@ Optional.</semantics>
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>Specifies if the geo-object is active or not. 
- 
-Optional.</semantics>
+                    <semantics>Optional: Specifies if the facility is active (operational) or not. Default value is 1 (Active).</semantics>
                 </attribute>
                 <attribute>
                     <name>DamageState</name>
@@ -114,9 +126,7 @@ Optional.</semantics>
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>The damage state on the GeoObject. 
- 
-Optional.</semantics>
+                    <semantics>Optional: The damage state on the Facility. Default value is 0 (NoDamage).</semantics>
                 </attribute>
                 <attribute>
                     <name>PercentComplete</name>
@@ -127,7 +137,29 @@ Optional.</semantics>
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>Describes the level of completness. [0-100]. 
+                    <semantics>Optional: Describes the level of completness during establishment/building of facility expressed in percent [0-100]. Default is 100%.</semantics>
+                </attribute>
+                <attribute>
+                    <name>Comment</name>
+                    <dataType>HLAunicodeString</dataType>
+                    <updateType>Conditional</updateType>
+                    <updateCondition>When Changed</updateCondition>
+                    <ownership>NoTransfer</ownership>
+                    <sharing>PublishSubscribe</sharing>
+                    <transportation>HLAreliable</transportation>
+                    <order>Receive</order>
+                    <semantics>Optional: A descriptive text comment.</semantics>
+                </attribute>
+                <attribute>
+                    <name>ObjectType</name>
+                    <dataType>EnvironmentObjectTypeStruct</dataType>
+                    <updateType>Static</updateType>
+                    <updateCondition>Initial</updateCondition>
+                    <ownership>NoTransfer</ownership>
+                    <sharing>PublishSubscribe</sharing>
+                    <transportation>HLAreliable</transportation>
+                    <order>Receive</order>
+                    <semantics>Record specifying the domain, the kind and the specific identification of the environment object. 
  
 Optional.</semantics>
                 </attribute>
@@ -144,56 +176,6 @@ Optional.</semantics>
 EventNumber can be zero (0) or increasing starting from one (1). 
  
 Optional.</semantics>
-                </attribute>
-                <attribute>
-                    <name>ForceId</name>
-                    <dataType>ForceIdentifierEnum8</dataType>
-                    <updateType>Conditional</updateType>
-                    <updateCondition>When Changed</updateCondition>
-                    <ownership>NoTransfer</ownership>
-                    <sharing>PublishSubscribe</sharing>
-                    <transportation>HLAreliable</transportation>
-                    <order>Receive</order>
-                    <semantics>The force that controls the GeoObject. 
- 
-Optional.</semantics>
-                </attribute>
-                <attribute>
-                    <name>ObjectType</name>
-                    <dataType>EnvironmentObjectTypeStruct</dataType>
-                    <updateType>Static</updateType>
-                    <updateCondition>Initial</updateCondition>
-                    <ownership>NoTransfer</ownership>
-                    <sharing>PublishSubscribe</sharing>
-                    <transportation>HLAreliable</transportation>
-                    <order>Receive</order>
-                    <semantics>Record specifying the domain, the kind and the specific identification of the environment object. 
- 
-Optional.</semantics>
-                </attribute>
-                <attribute>
-                    <name>LocationReference</name>
-                    <dataType>UuidArrayOfHLAbyte16</dataType>
-                    <updateType>Static</updateType>
-                    <updateCondition>Initial</updateCondition>
-                    <ownership>NoTransfer</ownership>
-                    <sharing>PublishSubscribe</sharing>
-                    <transportation>HLAreliable</transportation>
-                    <order>Receive</order>
-                    <semantics>A reference to a Geo object or NETN sub class of a RPR BaseEntity leaf node.</semantics>
-                </attribute>
-                <attribute>
-                    <name>Comment</name>
-                    <dataType>HLAunicodeString</dataType>
-                    <updateType>Conditional</updateType>
-                    <updateCondition>When Changed</updateCondition>
-                    <ownership>NoTransfer</ownership>
-                    <sharing>PublishSubscribe</sharing>
-                    <transportation>HLAreliable</transportation>
-                    <order>Receive</order>
-                    <semantics>A free textt that may be display in a map or not. 
- 
-Optional, default empty string.</semantics>
                 </attribute>
                 <objectClass>
                     <name>CheckPoint</name>
@@ -215,7 +197,7 @@ The modelling federate of the CheckPoint decides if the entity will pass the Che
                         <sharing>PublishSubscribe</sharing>
                         <transportation>HLAreliable</transportation>
                         <order>Receive</order>
-                        <semantics>The time that an entity shall wait, the total wait time can be greater when it is a queue. 
+                        <semantics>Required: The time that an entity shall wait at the checkpoint before passing. 
  
 This is a nominal value, federates can use this for modifing delay time for different types if entities, e.g add or subtract a value or multiply with a type depending factor.</semantics>
                     </attribute>
@@ -234,9 +216,7 @@ This is a nominal value, federates can use this for modifing delay time for diff
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>Unique id. 
- 
-Required.</semantics>
+                    <semantics>Required: Unique identifier for the GeoObject.</semantics>
                 </attribute>
                 <attribute>
                     <name>Name</name>
@@ -247,9 +227,7 @@ Required.</semantics>
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>Name of the geo object. 
- 
-Optional.</semantics>
+                    <semantics>Optional: Name of the GeoObject, e.g. Location name, Road name etc.</semantics>
                 </attribute>
                 <objectClass>
                     <name>Point</name>
