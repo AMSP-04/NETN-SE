@@ -14,3 +14,6 @@ Moved HLAvariantRecord PointVariantStruct at NETN-ETR to NETN-SE
 
 2020-03-18 - LO:
 Moved datatypes to NETN-BASE
+
+2020-07-03 - LO:
+Updated semantics

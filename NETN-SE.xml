@@ -4,7 +4,7 @@
         <name>NETN-SE</name>
         <type>FOM</type>
         <version>1.0</version>
-        <modificationDate>2020-06-22</modificationDate>
+        <modificationDate>2020-07-03</modificationDate>
         <securityClassification>Not Classified</securityClassification>
         <purpose>Define synthetic environment objects in a HLA Federation Execution.</purpose>
         <applicationDomain>Simulation, Training</applicationDomain>
@@ -61,7 +61,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
             <objectClass>
                 <name>NETN_Facility</name>
                 <sharing>PublishSubscribe</sharing>
-                <semantics>Base class for NETN Syntetical Environment object classes. </semantics>
+                <semantics>Base class for NETN Syntetical Environment object classes.</semantics>
                 <attribute>
                     <name>UniqueId</name>
                     <dataType>UuidArrayOfHLAbyte16</dataType>
@@ -71,7 +71,9 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>Required: Pre-defined or generated unique identifier of the object instance.</semantics>
+                    <semantics>Required. 
+
+Pre-defined or generated unique identifier of the object instance.</semantics>
                 </attribute>
                 <attribute>
                     <name>LocationReference</name>
@@ -82,7 +84,9 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>Required: A reference to a GeoObject or NETN sub-class of a RPR BaseEntity leaf node.</semantics>
+                    <semantics>Required. 
+
+A reference to a GeoObject or NETN sub-class of a RPR BaseEntity leaf node.</semantics>
                 </attribute>
                 <attribute>
                     <name>Name</name>
@@ -93,7 +97,9 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>Optional: Name of the object.</semantics>
+                    <semantics>Optional. 
+
+Name of the object.</semantics>
                 </attribute>
                 <attribute>
                     <name>ForceId</name>
@@ -104,7 +110,9 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>Optional: The force that operates the Facility. Default is 0 (Other).</semantics>
+                    <semantics>Optional. 
+
+The force that operates the Facility. Default is 0 (Other).</semantics>
                 </attribute>
                 <attribute>
                     <name>Status</name>
@@ -115,7 +123,9 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>Optional: Specifies if the facility is active (operational) or not. Default value is 1 (Active).</semantics>
+                    <semantics>Optional. 
+
+Specifies if the facility is active (operational) or not. Default value is 1 (Active).</semantics>
                 </attribute>
                 <attribute>
                     <name>DamageState</name>
@@ -126,7 +136,9 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>Optional: The damage state on the Facility. Default value is 0 (NoDamage).</semantics>
+                    <semantics>Optional. 
+
+The damage state on the Facility. Default value is 0 (NoDamage).</semantics>
                 </attribute>
                 <attribute>
                     <name>PercentComplete</name>
@@ -137,7 +149,9 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>Optional: Describes the level of completness during establishment/building of facility expressed in percent [0-100]. Default is 100%.</semantics>
+                    <semantics>Optional. 
+
+Describes the level of completness during establishment/building of facility expressed in percent [0-100]. Default is 100%.</semantics>
                 </attribute>
                 <attribute>
                     <name>Comment</name>
@@ -148,7 +162,9 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>Optional: A descriptive text comment.</semantics>
+                    <semantics>Optional. 
+
+A descriptive text comment.</semantics>
                 </attribute>
                 <attribute>
                     <name>ObjectType</name>
@@ -159,9 +175,11 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>Record specifying the domain, the kind and the specific identification of the environment object. 
+                    <semantics>Optional. 
+
+Record specifying the domain, the kind and the specific identification of the environment object. 
  
-Optional.</semantics>
+</semantics>
                 </attribute>
                 <attribute>
                     <name>ObjectId</name>
@@ -172,10 +190,12 @@ Optional.</semantics>
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>Indentifies the Site and Application of the federate that is publishing the GeoObject. 
+                    <semantics>Optional. 
+
+Indentifies the Site and Application of the federate that is publishing the GeoObject. 
 EventNumber can be zero (0) or increasing starting from one (1). 
  
-Optional.</semantics>
+</semantics>
                 </attribute>
                 <objectClass>
                     <name>CheckPoint</name>
@@ -197,7 +217,9 @@ The modelling federate of the CheckPoint decides if the entity will pass the Che
                         <sharing>PublishSubscribe</sharing>
                         <transportation>HLAreliable</transportation>
                         <order>Receive</order>
-                        <semantics>Required: The time that an entity shall wait at the checkpoint before passing. 
+                        <semantics>Required. 
+
+The time that an entity shall wait at the checkpoint before passing. 
  
 This is a nominal value, federates can use this for modifing delay time for different types if entities, e.g add or subtract a value or multiply with a type depending factor.</semantics>
                     </attribute>
@@ -242,15 +264,19 @@ This is a nominal value, federates can use this for modifing delay time for diff
                         <sharing>PublishSubscribe</sharing>
                         <transportation>HLAreliable</transportation>
                         <order>Receive</order>
-                        <semantics>The location. 
+                        <semantics>Required. 
+
+The location. 
  
-Required.</semantics>
+</semantics>
                     </attribute>
                 </objectClass>
                 <objectClass>
                     <name>Path</name>
                     <sharing>PublishSubscribe</sharing>
-                    <semantics>A path with a least two points, describing e.g. a sea-lane or ground route.</semantics>
+                    <semantics>Required. 
+
+A path with a least two points, describing e.g. a sea-lane or ground route.</semantics>
                     <attribute>
                         <name>Points</name>
                         <dataType>GeocentricPath</dataType>
@@ -268,7 +294,9 @@ Required.</semantics>
                 <objectClass>
                     <name>Area</name>
                     <sharing>PublishSubscribe</sharing>
-                    <semantics>An closed area defined by at least three points in a ploygon.</semantics>
+                    <semantics>Required. 
+
+An closed area defined by at least three points in a ploygon.</semantics>
                     <attribute>
                         <name>Base</name>
                         <dataType>AreaVariantStruct</dataType>
@@ -283,7 +311,9 @@ Required.</semantics>
                     <objectClass>
                         <name>Volume</name>
                         <sharing>PublishSubscribe</sharing>
-                        <semantics>A volume defined by a closed bottom area and an elevation.</semantics>
+                        <semantics>Required. 
+
+A volume defined by a closed bottom area and an elevation.</semantics>
                         <attribute>
                             <name>Height</name>
                             <dataType>MeterFloat32</dataType>
