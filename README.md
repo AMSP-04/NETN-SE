@@ -6,7 +6,7 @@
 
 TBD
 
-The NATO Education and Training Network Organization Module (NETN SE) is a specification of how to represent organizations in a federated distributed simulation.
+The NATO Education and Training Network Synthetic Environment Module (NETN SE) is a specification of how to represent geographically located features and facilities in a federated distributed simulation.
 
 The specification is based on IEEE 1516 High Level Architecture (HLA) Object Model Template (OMT) and primarily intended to support interoperability in a federated simulation (federation) based on HLA. A Federation Object Model (FOM) Module is used to specify how data is represented and exchanged in the federation. The NETN-SE FOM module is available as an XML file for use in HLA based federations.
 
