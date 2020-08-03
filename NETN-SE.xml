@@ -61,7 +61,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
             <objectClass>
                 <name>NETN_Facility</name>
                 <sharing>PublishSubscribe</sharing>
-                <semantics>Base class for NETN Syntetical Environment object classes.</semantics>
+                <semantics>Base class for NETN Syntetic Environment object classes.</semantics>
                 <attribute>
                     <name>UniqueId</name>
                     <dataType>UuidArrayOfHLAbyte16</dataType>
@@ -71,22 +71,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>Required. 
-
-Pre-defined or generated unique identifier of the object instance.</semantics>
-                </attribute>
-                <attribute>
-                    <name>LocationReference</name>
-                    <dataType>UuidArrayOfHLAbyte16</dataType>
-                    <updateType>Static</updateType>
-                    <updateCondition>Initial</updateCondition>
-                    <ownership>NoTransfer</ownership>
-                    <sharing>PublishSubscribe</sharing>
-                    <transportation>HLAreliable</transportation>
-                    <order>Receive</order>
-                    <semantics>Required. 
-
-A reference to a GeoObject or NETN sub-class of a RPR BaseEntity leaf node.</semantics>
+                    <semantics>Required. Pre-defined or generated unique identifier of the object instance.</semantics>
                 </attribute>
                 <attribute>
                     <name>Name</name>
@@ -97,74 +82,7 @@ A reference to a GeoObject or NETN sub-class of a RPR BaseEntity leaf node.</sem
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>Optional. 
-
-Name of the object.</semantics>
-                </attribute>
-                <attribute>
-                    <name>ForceId</name>
-                    <dataType>ForceIdentifierEnum8</dataType>
-                    <updateType>Conditional</updateType>
-                    <updateCondition>When Changed</updateCondition>
-                    <ownership>NoTransfer</ownership>
-                    <sharing>PublishSubscribe</sharing>
-                    <transportation>HLAreliable</transportation>
-                    <order>Receive</order>
-                    <semantics>Optional. 
-
-The force that operates the Facility. Default is 0 (Other).</semantics>
-                </attribute>
-                <attribute>
-                    <name>Status</name>
-                    <dataType>ActiveStatusEnum8</dataType>
-                    <updateType>Conditional</updateType>
-                    <updateCondition>When Changed</updateCondition>
-                    <ownership>NoTransfer</ownership>
-                    <sharing>PublishSubscribe</sharing>
-                    <transportation>HLAreliable</transportation>
-                    <order>Receive</order>
-                    <semantics>Optional. 
-
-Specifies if the facility is active (operational) or not. Default value is 1 (Active).</semantics>
-                </attribute>
-                <attribute>
-                    <name>DamageState</name>
-                    <dataType>DamageStatusEnum32</dataType>
-                    <updateType>Conditional</updateType>
-                    <updateCondition>When Changed</updateCondition>
-                    <ownership>NoTransfer</ownership>
-                    <sharing>PublishSubscribe</sharing>
-                    <transportation>HLAreliable</transportation>
-                    <order>Receive</order>
-                    <semantics>Optional. 
-
-The damage state on the Facility. Default value is 0 (NoDamage).</semantics>
-                </attribute>
-                <attribute>
-                    <name>PercentComplete</name>
-                    <dataType>PercentFloat32</dataType>
-                    <updateType>Conditional</updateType>
-                    <updateCondition>When Changed</updateCondition>
-                    <ownership>NoTransfer</ownership>
-                    <sharing>PublishSubscribe</sharing>
-                    <transportation>HLAreliable</transportation>
-                    <order>Receive</order>
-                    <semantics>Optional. 
-
-Describes the level of completness during establishment/building of facility expressed in percent [0-100]. Default is 100%.</semantics>
-                </attribute>
-                <attribute>
-                    <name>Comment</name>
-                    <dataType>HLAunicodeString</dataType>
-                    <updateType>Conditional</updateType>
-                    <updateCondition>When Changed</updateCondition>
-                    <ownership>NoTransfer</ownership>
-                    <sharing>PublishSubscribe</sharing>
-                    <transportation>HLAreliable</transportation>
-                    <order>Receive</order>
-                    <semantics>Optional. 
-
-A descriptive text comment.</semantics>
+                    <semantics>Optional. Name of the facility.</semantics>
                 </attribute>
                 <attribute>
                     <name>ObjectType</name>
@@ -175,11 +93,73 @@ A descriptive text comment.</semantics>
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>Optional. 
-
-Record specifying the domain, the kind and the specific identification of the environment object. 
- 
-</semantics>
+                    <semantics>Optional. Specifying the domain, the kind and the specific identification of the environment object.</semantics>
+                </attribute>
+                <attribute>
+                    <name>Comment</name>
+                    <dataType>HLAunicodeString</dataType>
+                    <updateType>Conditional</updateType>
+                    <updateCondition>When Changed</updateCondition>
+                    <ownership>NoTransfer</ownership>
+                    <sharing>PublishSubscribe</sharing>
+                    <transportation>HLAreliable</transportation>
+                    <order>Receive</order>
+                    <semantics>Optional. A descriptive text comment.</semantics>
+                </attribute>
+                <attribute>
+                    <name>ForceId</name>
+                    <dataType>ForceIdentifierEnum8</dataType>
+                    <updateType>Conditional</updateType>
+                    <updateCondition>On Change</updateCondition>
+                    <ownership>DivestAcquire</ownership>
+                    <sharing>PublishSubscribe</sharing>
+                    <transportation>HLAreliable</transportation>
+                    <order>Receive</order>
+                    <semantics>Optional. The force that operates the Facility. Default is 0 (Other).</semantics>
+                </attribute>
+                <attribute>
+                    <name>LocationReference</name>
+                    <dataType>UuidArrayOfHLAbyte16</dataType>
+                    <updateType>Static</updateType>
+                    <updateCondition>Initial</updateCondition>
+                    <ownership>DivestAcquire</ownership>
+                    <sharing>PublishSubscribe</sharing>
+                    <transportation>HLAreliable</transportation>
+                    <order>Receive</order>
+                    <semantics>Required. A reference to a GeoObject or NETN sub-class of a RPR BaseEntity leaf node.</semantics>
+                </attribute>
+                <attribute>
+                    <name>Status</name>
+                    <dataType>ActiveStatusEnum8</dataType>
+                    <updateType>Conditional</updateType>
+                    <updateCondition>On change</updateCondition>
+                    <ownership>DivestAcquire</ownership>
+                    <sharing>PublishSubscribe</sharing>
+                    <transportation>HLAreliable</transportation>
+                    <order>Receive</order>
+                    <semantics>Optional. Specifies if the facility is active (operational) or not. Default value is 1 (Active).</semantics>
+                </attribute>
+                <attribute>
+                    <name>DamageState</name>
+                    <dataType>DamageStatusEnum32</dataType>
+                    <updateType>Conditional</updateType>
+                    <updateCondition>On Change</updateCondition>
+                    <ownership>DivestAcquire</ownership>
+                    <sharing>PublishSubscribe</sharing>
+                    <transportation>HLAreliable</transportation>
+                    <order>Receive</order>
+                    <semantics>Optional. The damage state on the Facility. Default value is 0 (NoDamage).</semantics>
+                </attribute>
+                <attribute>
+                    <name>PercentComplete</name>
+                    <dataType>PercentFloat32</dataType>
+                    <updateType>Conditional</updateType>
+                    <updateCondition>When Changed</updateCondition>
+                    <ownership>DivestAcquire</ownership>
+                    <sharing>PublishSubscribe</sharing>
+                    <transportation>HLAreliable</transportation>
+                    <order>Receive</order>
+                    <semantics>Optional. Describes the level of completness during establishment/building of facility expressed in percent [0-100]. Default is 100%.</semantics>
                 </attribute>
                 <attribute>
                     <name>ObjectId</name>
@@ -190,12 +170,7 @@ Record specifying the domain, the kind and the specific identification of the en
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>Optional. 
-
-Indentifies the Site and Application of the federate that is publishing the GeoObject. 
-EventNumber can be zero (0) or increasing starting from one (1). 
- 
-</semantics>
+                    <semantics>Optional. Indentifies the Site and Application of the federate that is publishing the Facility. EventNumber can be zero (0) or increasing starting from one (1).</semantics>
                 </attribute>
                 <objectClass>
                     <name>CheckPoint</name>
@@ -212,23 +187,19 @@ The modelling federate of the CheckPoint decides if the entity will pass the Che
                         <name>DelayTime</name>
                         <dataType>TimeSecondInteger32</dataType>
                         <updateType>Conditional</updateType>
-                        <updateCondition>When Changed</updateCondition>
-                        <ownership>NoTransfer</ownership>
+                        <updateCondition>On change</updateCondition>
+                        <ownership>DivestAcquire</ownership>
                         <sharing>PublishSubscribe</sharing>
                         <transportation>HLAreliable</transportation>
                         <order>Receive</order>
-                        <semantics>Required. 
-
-The time that an entity shall wait at the checkpoint before passing. 
- 
-This is a nominal value, federates can use this for modifing delay time for different types if entities, e.g add or subtract a value or multiply with a type depending factor.</semantics>
+                        <semantics>Required. The time that an entity shall wait at the checkpoint before passing. This is a nominal value, federates can use this for modifing delay time for different types if entities, e.g add or subtract a value or multiply with a type depending factor.</semantics>
                     </attribute>
                 </objectClass>
             </objectClass>
             <objectClass>
                 <name>NETN_GeoObject</name>
                 <sharing>Neither</sharing>
-                <semantics>Base class for geographical objects.</semantics>
+                <semantics>Base class for abstract repreaentation of geographically associated points, paths, regions and volumes.</semantics>
                 <attribute>
                     <name>UniqueId</name>
                     <dataType>UuidArrayOfHLAbyte16</dataType>
@@ -260,66 +231,56 @@ This is a nominal value, federates can use this for modifing delay time for diff
                         <dataType>WorldLocationStruct</dataType>
                         <updateType>Conditional</updateType>
                         <updateCondition>When Changed</updateCondition>
-                        <ownership>NoTransfer</ownership>
+                        <ownership>DivestAcquire</ownership>
                         <sharing>PublishSubscribe</sharing>
                         <transportation>HLAreliable</transportation>
                         <order>Receive</order>
-                        <semantics>Required. 
-
-The location. 
- 
-</semantics>
+                        <semantics>Required. The location in World coordinates XYZ.</semantics>
                     </attribute>
                 </objectClass>
                 <objectClass>
                     <name>Path</name>
                     <sharing>PublishSubscribe</sharing>
                     <semantics>Required. 
-
+ 
 A path with a least two points, describing e.g. a sea-lane or ground route.</semantics>
                     <attribute>
                         <name>Points</name>
                         <dataType>GeocentricPath</dataType>
                         <updateType>Conditional</updateType>
                         <updateCondition>When Changed</updateCondition>
-                        <ownership>NoTransfer</ownership>
+                        <ownership>DivestAcquire</ownership>
                         <sharing>PublishSubscribe</sharing>
                         <transportation>HLAreliable</transportation>
                         <order>Receive</order>
-                        <semantics>A polygonal chain with at least 2 points describing the path. 
- 
-Required.</semantics>
+                        <semantics>Required. A path with at least 2 points expressed in WorldCoordiantes XYZ.</semantics>
                     </attribute>
                 </objectClass>
                 <objectClass>
                     <name>Area</name>
                     <sharing>PublishSubscribe</sharing>
-                    <semantics>Required. 
-
-An closed area defined by at least three points in a ploygon.</semantics>
+                    <semantics>Required. A surface defined by at least three points in a ploygon or a circle.</semantics>
                     <attribute>
                         <name>Base</name>
                         <dataType>AreaVariantStruct</dataType>
                         <updateType>Conditional</updateType>
                         <updateCondition>When Changed</updateCondition>
-                        <ownership>NoTransfer</ownership>
+                        <ownership>DivestAcquire</ownership>
                         <sharing>PublishSubscribe</sharing>
                         <transportation>HLAreliable</transportation>
                         <order>Receive</order>
-                        <semantics>Defines the area, either as a polygon or a circle.</semantics>
+                        <semantics>Required. Defines the area, either as a polygon or a circle.</semantics>
                     </attribute>
                     <objectClass>
                         <name>Volume</name>
                         <sharing>PublishSubscribe</sharing>
-                        <semantics>Required. 
-
-A volume defined by a closed bottom area and an elevation.</semantics>
+                        <semantics>Required. A volume defined by a closed bottom surface and a height.</semantics>
                         <attribute>
                             <name>Height</name>
                             <dataType>MeterFloat32</dataType>
                             <updateType>Conditional</updateType>
                             <updateCondition>When Changed</updateCondition>
-                            <ownership>NoTransfer</ownership>
+                            <ownership>DivestAcquire</ownership>
                             <sharing>PublishSubscribe</sharing>
                             <transportation>HLAreliable</transportation>
                             <order>Receive</order>
