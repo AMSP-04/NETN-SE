@@ -61,7 +61,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
             <objectClass>
                 <name>SE_GeoObject</name>
                 <sharing>Neither</sharing>
-                <semantics>Base class for abstract repreaentation of geographically associated points, paths, regions and volumes.</semantics>
+                <semantics>Base class for abstract repreaentation of geographically associated locations, paths, and regions.</semantics>
                 <attribute>
                     <name>UniqueId</name>
                     <dataType>UuidArrayOfHLAbyte16</dataType>
@@ -129,7 +129,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                         <sharing>PublishSubscribe</sharing>
                         <transportation>HLAreliable</transportation>
                         <order>Receive</order>
-                        <semantics>Required. Defines the area, either as a polygon or a circle or quadrangle.</semantics>
+                        <semantics>Required. Defines the area, either as a geodetic polygon or a circle or quadrangle (rect).</semantics>
                     </attribute>
                 </objectClass>
             </objectClass>
