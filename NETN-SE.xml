@@ -247,6 +247,17 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <order>Receive</order>
                     <semantics>Optional. Indentifies the Site and Application of the federate that is publishing the Facility. EventNumber can be zero (0) or increasing starting from one (1).</semantics>
                 </attribute>
+                <attribute>
+                    <name>SymbolId</name>
+                    <dataType>SymbolIdentifier</dataType>
+                    <updateType>NA</updateType>
+                    <updateCondition></updateCondition>
+                    <ownership>DivestAcquire</ownership>
+                    <sharing>PublishSubscribe</sharing>
+                    <transportation>HLAreliable</transportation>
+                    <order>Receive</order>
+                    <semantics>Optional. A symbol identifier represented as a string. The symbol standard used is indicated using an URI notation (uri:xxxxxxxxxx). The following uri should be used for common symbology standards app6b, app6b, app6c, app6c, 2525b, 2525c, 2525d. If not provided the symbol standard used is undefined.</semantics>
+                </attribute>
                 <objectClass>
                     <name>CheckPoint</name>
                     <sharing>PublishSubscribe</sharing>
