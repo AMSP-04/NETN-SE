@@ -4,7 +4,7 @@
         <name>NETN-SE</name>
         <type>FOM</type>
         <version>1.0</version>
-        <modificationDate>2020-07-03</modificationDate>
+        <modificationDate>2020-08-07</modificationDate>
         <securityClassification>Not Classified</securityClassification>
         <purpose>Define synthetic environment objects in a HLA Federation Execution.</purpose>
         <applicationDomain>Simulation, Training</applicationDomain>
