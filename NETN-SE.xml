@@ -61,7 +61,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
             <objectClass>
                 <name>SE_GeoObject</name>
                 <sharing>Neither</sharing>
-                <semantics>Base class for abstract repreaentation of geographically associated locations, paths, and regions.</semantics>
+                <semantics>Representation of geographically associated locations, paths, and regions with or without a defined name. E.g. a harbour may be represented as a Location with a specific name, a commonly used route can be represented as a named path and a region can be represented as an specific geographic are and reused as an object instance in the simulation.</semantics>
                 <attribute>
                     <name>UniqueId</name>
                     <dataType>UuidArrayOfHLAbyte16</dataType>
@@ -129,7 +129,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                         <sharing>PublishSubscribe</sharing>
                         <transportation>HLAreliable</transportation>
                         <order>Receive</order>
-                        <semantics>Required. Defines the area, either as a geodetic polygon or a circle or quadrangle (rect).</semantics>
+                        <semantics>Required. Defines the area, either as a geodetic polygon, circle or quadrangle.</semantics>
                     </attribute>
                 </objectClass>
             </objectClass>
@@ -250,14 +250,8 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                 <objectClass>
                     <name>CheckPoint</name>
                     <sharing>PublishSubscribe</sharing>
-                    <semantics>A point where aggregate and physical entities shall stop and wait a specified time. 
-The modelling federate shall register a NETN_GeoObject.Point instance to model the CheckPoint when establish a new CheckPoint. Set the attribute LocationReferenced to the Point instance . 
- 
-The attribute Status shall be ActiveStatusEnum8.Active when the CheckPoint is operated. 
- 
-The modelling federate of an active CheckPoint shall send a NETN-ETR Wait interaction wiith the time to wait and with a reference to the entity that will pass the CheckPoint. 
- 
-The modelling federate of the CheckPoint decides if the entity will pass the CheckPoint or not, e.g. can the distance between the CheckPoint and the entity be the triggering cause.</semantics>
+                    <semantics>A checkpoint defines a location where simulated aggregate and physical entities should stop and wait a specified time before continuing on their route.
+If the checkpoint is currently in operation the status attribute should be set to true. A system simulating movement of physical or aggregate entities can be either directly affected by the checkpoint by subscribing to its state or indirectly by receiving an NETN-ETR `Wait` task.  </semantics>
                     <attribute>
                         <name>DelayTime</name>
                         <dataType>TimeSecondInteger32</dataType>
