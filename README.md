@@ -1,20 +1,20 @@
 # NETN-SE
 
 ## Introduction
-The NATO Education and Training Network Synthetic Environment Module (NETN-SE) is a specification of how to represent generic synthetic environment elements such as geographical Locations, Paths and Regions in a federated distributed simulation. It also specifices how to represent Facility object that represent some function or capability associated with a geographic locations or a specific entity.
+The NATO Education and Training Network Synthetic Environment Module (NETN-SE) is a specification of how to represent generic synthetic environment elements such as geographical locations, paths and regions in a federated distributed simulation. It also specifies how to represent facilities that represent some function or capability associated with a geographic location or a specific entity.
 
 The specification is based on IEEE 1516 High Level Architecture (HLA) Object Model Template (OMT) and primarily intended to support interoperability in a federated simulation (federation) based on HLA. A Federation Object Model (FOM) Module is used to specify how data is represented and exchanged in the federation. The NETN-ORG FOM module is available as an XML file for use in HLA based federations.
 
 ### Purpose
 
-The NETN-SE FOM Module provides a common standard interface for representing persistent abstact geographical objects that can be (re-)used and referenced for specifying locations, paths, and regions. The module also include the representation of facilities with a function or capability to perform activities.
+The NETN-SE FOM Module provides a common standard interface for representing persistent abstract geographical objects that can be (re-)used and referenced for specifying locations, paths, and regions. The module also includes the representation of facilities with a function or capability to perform activities.
 
 ### Scope
 
 The current version of the NETN-SE is limited to:
 
 - Representation of Checkpoint Facilities
-- Representation of specific geographical Locations, Paths and Regions
+- Representation of specific geographical locations, paths and regions
 
 ## Licence
 

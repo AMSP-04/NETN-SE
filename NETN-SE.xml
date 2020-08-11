@@ -97,7 +97,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                         <sharing>PublishSubscribe</sharing>
                         <transportation>HLAreliable</transportation>
                         <order>Receive</order>
-                        <semantics>Required. A geographical point in lat, lon and altitude above mean sea level.</semantics>
+                        <semantics>Required. A geographical point in latitude, longitude, and altitude above mean sea level.</semantics>
                     </attribute>
                 </objectClass>
                 <objectClass>
@@ -157,7 +157,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>Required. A reference that identifies a geographical location directly or indirectly by reference to simulated object.</semantics>
+                    <semantics>Required. A reference that identifies a geographical location directly or indirectly by reference to a simulated object.</semantics>
                 </attribute>
                 <attribute>
                     <name>Name</name>
@@ -179,7 +179,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>Optional. A symbol identifier represented as a string. The symbol standard used is indicated using an URI notation (uri:xxxxxxxxxx). The following uri should be used for common symbology standards app6b, app6b, app6c, app6c, 2525b, 2525c, 2525d. If not provided the symbol standard used is undefined.</semantics>
+                    <semantics>Optional. A symbol identifier represented as a string. The symbol standard used is indicated using a URI notation (uri:xxxxxxxxxx). The following URI should be used for common symbology standards app6b, app6b, app6c, app6c, 2525b, 2525c, 2525d. If not provided the symbol standard used is undefined.</semantics>
                 </attribute>
                 <attribute>
                     <name>Status</name>
@@ -212,7 +212,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>Optional. The force that operates the Facility. Default is 0 (Other).</semantics>
+                    <semantics>Optional. The force that operates the facility. Default is 0 (Other).</semantics>
                 </attribute>
                 <attribute>
                     <name>PercentComplete</name>
@@ -223,7 +223,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>Optional. Describes the level of completness during establishment/building of facility expressed in percent [0-100]. Default is 100%.</semantics>
+                    <semantics>Optional. Describes a level of completion when establishing/building of the facility. Expressed in percent [0-100]. Default is 100%.</semantics>
                 </attribute>
                 <attribute>
                     <name>DamageState</name>
@@ -234,7 +234,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>Optional. The damage state on the Facility. Default value is 0 (NoDamage).</semantics>
+                    <semantics>Optional. The damage state on the facility. Default value is 0 (NoDamage).</semantics>
                 </attribute>
                 <attribute>
                     <name>Comment</name>
@@ -250,8 +250,8 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                 <objectClass>
                     <name>CheckPoint</name>
                     <sharing>PublishSubscribe</sharing>
-                    <semantics>A checkpoint defines a location where simulated aggregate and physical entities should stop and wait a specified time before continuing on their route.
-If the checkpoint is currently in operation the status attribute should be set to true. A system simulating movement of physical or aggregate entities can be either directly affected by the checkpoint by subscribing to its state or indirectly by receiving an NETN-ETR `Wait` task.  </semantics>
+                    <semantics>A checkpoint defines a location where simulated aggregate and physical entities should stop and wait a specified time before continuing on their route. 
+If the checkpoint is currently in operation the status attribute should be set to true. A system simulating movement of physical or aggregate entities can be either directly affected by the checkpoint by subscribing to its state or indirectly by receiving an NETN-ETR `Wait` task.</semantics>
                     <attribute>
                         <name>DelayTime</name>
                         <dataType>TimeSecondInteger32</dataType>
@@ -261,7 +261,7 @@ If the checkpoint is currently in operation the status attribute should be set t
                         <sharing>PublishSubscribe</sharing>
                         <transportation>HLAreliable</transportation>
                         <order>Receive</order>
-                        <semantics>Required. The time that an entity shall wait at the checkpoint before passing. This is a nominal value, federates can use this for modifing delay time for different types if entities, e.g add or subtract a value or multiply with a type depending factor.</semantics>
+                        <semantics>Required. The time that an entity shall wait at the checkpoint before passing. The time is a nominal value; federates can use this for modifying delay time for different types of entities, e.g. add or subtract a value or multiply with a type depending factor.</semantics>
                     </attribute>
                 </objectClass>
             </objectClass>
