@@ -1,24 +1,20 @@
 # NETN-SE
-![overview](./images/overview.png)
-
 
 ## Introduction
+The NATO Education and Training Network Synthetic Environment Module (NETN-SE) is a specification of how to represent generic synthetic environment elements such as geographical locations, paths and regions in a federated distributed simulation. It also specifies how to represent facilities that represent some function or capability associated with a geographic location or a specific entity.
 
-TBD
-
-The NATO Education and Training Network Synthetic Environment Module (NETN SE) is a specification of how to represent geographically located features and facilities in a federated distributed simulation.
-
-The specification is based on IEEE 1516 High Level Architecture (HLA) Object Model Template (OMT) and primarily intended to support interoperability in a federated simulation (federation) based on HLA. A Federation Object Model (FOM) Module is used to specify how data is represented and exchanged in the federation. The NETN-SE FOM module is available as an XML file for use in HLA based federations.
+The specification is based on IEEE 1516 High Level Architecture (HLA) Object Model Template (OMT) and primarily intended to support interoperability in a federated simulation (federation) based on HLA. A Federation Object Model (FOM) Module is used to specify how data is represented and exchanged in the federation. The NETN-ORG FOM module is available as an XML file for use in HLA based federations.
 
 ### Purpose
 
-The NETN-SE FOM Module provides a common standard interface for the representation of the ...
+The NETN-SE FOM Module provides a common standard interface for representing persistent abstract geographical objects that can be (re-)used and referenced for specifying locations, paths, and regions. The module also includes the representation of facilities with a function or capability to perform activities.
 
 ### Scope
 
-- ...
-- ...
-  - ...
+The current version of the NETN-SE is limited to:
+
+- Representation of Checkpoint Facilities
+- Representation of specific geographical locations, paths and regions
 
 ## Licence
 
@@ -46,7 +42,7 @@ Version numbering of this FOM Module and associated documentation is based on th
 
 |Version|Description|
 |---|---|
-|v 1.0 |Initial release of NETN SE FOM Module based on MSDL and Viking Computer Assisted eXercise (CAX).|
+|v 1.0 |Initial release of NETN-SE FOM Module based on MSDL and Viking Computer Assisted eXercise (CAX).|
 
 [Changelog](changelog.md)
 
