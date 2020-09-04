@@ -57,7 +57,7 @@ The `SE_GeoObject` is a representation of geographically associated locations, p
 |Attribtue|Description|
 |---|---|
 |UniqueId|**Required.** Unique identifier for the GeoObject.|
-|Name|***Inherited*** **Optional:** Name of the GeoObject, e.g. Location name, Road name etc.|
+|Name|**Optional.** Name of the GeoObject, e.g. Location name, Road name etc.|
 
 
 ### Location
@@ -66,7 +66,7 @@ A location is a geographical point in latitude, longitude and altitude above mea
 
 |Attribtue|Description|
 |---|---|
-|Point|**Required:** A geographical point in latitude, longitude, and altitude above mean sea level.|
+|Point|**Required.** A geographical point in latitude, longitude, and altitude above mean sea level.|
 
 ### Path
 
@@ -74,7 +74,7 @@ A path is defined as a sequence of at least two locations. Each location in the 
 
 |Attribtue|Description|
 |---|---|
-|Points|**Required:** A path with at least 2 points expressed as GeodeticPoints.|
+|Points|**Required.** A path with at least 2 points expressed as GeodeticPoints.|
 
 ### Region
 
@@ -82,4 +82,4 @@ A region is an area on the earth's surface defined by a polygon or a circle.
 
 |Attribtue|Description|
 |---|---|
-|Area|**Required:** Defines the area, either as a geodetic polygon, circle or a quadrangle.|
+|Area|**Required.** Defines the area, either as a geodetic polygon, circle or a quadrangle.|

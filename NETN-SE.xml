@@ -56,7 +56,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>Required: Unique identifier for the GeoObject.</semantics>
+                    <semantics>Required. Unique identifier for the GeoObject.</semantics>
                 </attribute>
                 <attribute>
                     <name>Name</name>
@@ -67,7 +67,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>Optional: Name of the GeoObject, e.g. Location name, Road name etc.</semantics>
+                    <semantics>Optional. Name of the GeoObject, e.g. Location name, Road name etc.</semantics>
                 </attribute>
                 <objectClass>
                     <name>Location</name>
