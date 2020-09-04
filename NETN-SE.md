@@ -19,9 +19,11 @@ The current version of the NETN-SE is limited to:
 - Representation of Checkpoint Facilities
 - Representation of specific geographical locations, paths and regions
 
-## Object Classes
+<img src=./images/se-objectclasses.png>
 
-### Facility
+**Figure: GeoObject and Facility**
+
+## Facility
 
 The `SE_Facility` object class is a base class for all types of facilities. In the current version of NETN-SE the only facility represented is a `Checkpoint` facility.
 
@@ -30,7 +32,7 @@ The `SE_Facility` object class is a base class for all types of facilities. In t
 |UniqueId|**Required.** Pre-defined or generated unique identifier of the object instance.|
 |LocationReference|**Required.** A reference that identifies a geographical location directly or indirectly by reference to a simulated object.|
 |Name|**Optional.** Name of the facility.|
-|SymbolId|**Optional.** A symbol identifier represented as a string. The symbol standard used is indicated using a URI notation (uri:xxxxxxxxxx). The following URI should be used for common symbology standards app6b, app6b, app6c, app6c, 2525b, 2525c, 2525d. If not provided the symbol standard used is undefined.|
+|SymbolId|**Optional.** A symbol identifier represented as a string. |
 |Status|**Optional.** Specifies if the facility is active (operational) or not. Default value is 1 (Active).|
 |ObjectType|**Optional.** Specifying the domain, the kind and the specific identification of the environment object.|
 |ForceId|**Optional.** The force that operates the facility. Default is 0 (Other).|
@@ -38,46 +40,46 @@ The `SE_Facility` object class is a base class for all types of facilities. In t
 |DamageState|**Optional.** The damage state on the facility. Default value is 0 (NoDamage).|
 |Comment|**Optional.** A descriptive text comment.|
 
-#### Checkpoint
+### Checkpoint
 
 A `CheckPoint` defines a location where simulated aggregate and physical entities should stop and wait a specified time before continuing on their route.
-If the checkpoint is currently in operation, the status attribute value should be True. A system simulating the movement of a physical or an aggregate entity can either be directly affected by the checkpoint, by subscribing to its state, or indirectly by receiving an NETN-ETR `Wait` task.  
 
-<img src=./images/se-checkpoint.png>
-
-**Figure: Checkpoint Facility**
+If the checkpoint is currently in operation, the status attribute value should be True. A system simulating the movement of a physical or an aggregate entity can either be directly affected by the checkpoint, by subscribing to its state, or indirectly by receiving a NETN-ETR `Wait` task.  
 
 |Attribtue|Description|
 |---|---|
 |DelayTime|**Required.** The time that an entity shall wait at the checkpoint before passing. The time is a nominal value; federates can use this for modifying delay time for different types of entities, e.g. add or subtract a value or multiply with a type depending factor.|
 
+## GeoObject
 
-### GeoObject
+The `SE_GeoObject` is a representation of geographically associated locations, paths, and regions with or without a defined name. E.g. a harbour may be represented as a location with a specific name, a commonly used route can be represented as a named path and a region can be represented as a specific geographic area and reused as an object instance in the simulation.
 
-The `SE_GeoObject` is a representation of geographically associated locations, paths, and regions with or without a defined name. E.g. a harbour may be represented as a location with a specific name, a commonly used route can be represented as a named path and a region can be represented as a specific geographic are and reused as an object instance in the simulation.
-
-<img src=./images/se-objectclasses.png>
-
-**Figure: GeoObject classes**
-
-#### Location
 |Attribtue|Description|
 |---|---|
 |UniqueId|**Required.** Unique identifier for the GeoObject.|
-|Name|**Optional:** Name of the GeoObject, e.g. Location name, Road name etc.|
+|Name|***Inherited*** **Optional:** Name of the GeoObject, e.g. Location name, Road name etc.|
+
+
+### Location
+
+A location is a geographical point in latitude, longitude and altitude above mean sea level.
+
+|Attribtue|Description|
+|---|---|
 |Point|**Required:** A geographical point in latitude, longitude, and altitude above mean sea level.|
 
+### Path
 
-#### Path
+A path is defined as a sequence of at least two locations. Each location in the path is defined as geodetic coordinates and altitude above the mean sea level.
+
 |Attribtue|Description|
 |---|---|
-|UniqueId|**Required.** Unique identifier for the GeoObject.|
-|Name|**Optional:** Name of the GeoObject, e.g. Location name, Road name etc.|
 |Points|**Required:** A path with at least 2 points expressed as GeodeticPoints.|
 
-#### Region
+### Region
+
+A region is an area on the earth's surface defined by a polygon or a circle.
+
 |Attribtue|Description|
 |---|---|
-|UniqueId|**Required.** Unique identifier for the GeoObject.|
-|Name|**Optional:** Name of the GeoObject, e.g. Location name, Road name etc.|
 |Area|**Required:** Defines the area, either as a geodetic polygon, circle or a quadrangle.|
