@@ -44,101 +44,26 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
         <objectClass>
             <name>HLAobjectRoot</name>
             <objectClass>
-                <name>SE_GeoObject</name>
-                <sharing>Neither</sharing>
-                <semantics>Representation of geographically associated locations, paths, and regions with or without a defined name. E.g. a harbour may be represented as a Location with a specific name, a commonly used route can be represented as a named path and a region can be represented as an specific geographic are and reused as an object instance in the simulation.</semantics>
+                <name>EnvironmentObject</name>
+                <sharing>Subscribe</sharing>
+                <semantics>A base class of environment point, linear, or areal object classes.</semantics>
                 <attribute>
                     <name>Name</name>
                     <dataType>HLAunicodeString</dataType>
-                    <updateType>Static</updateType>
-                    <updateCondition>Initial</updateCondition>
+                    <updateType>NA</updateType>
+                    <updateCondition></updateCondition>
                     <ownership>NoTransfer</ownership>
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
                     <semantics>Optional. Name of the GeoObject, e.g. Location name, Road name etc.</semantics>
                 </attribute>
-                <objectClass>
-                    <name>Location</name>
-                    <sharing>PublishSubscribe</sharing>
-                    <semantics>A location is a geographical point in latitude, longitude and altitude above mean sea level.</semantics>
-                    <attribute>
-                        <name>Point</name>
-                        <dataType>GeodeticPoint</dataType>
-                        <updateType>Conditional</updateType>
-                        <updateCondition>When Changed</updateCondition>
-                        <ownership>DivestAcquire</ownership>
-                        <sharing>PublishSubscribe</sharing>
-                        <transportation>HLAreliable</transportation>
-                        <order>Receive</order>
-                        <semantics>Required. A geographical point in latitude, longitude, and altitude above mean sea level.</semantics>
-                    </attribute>
-                </objectClass>
-                <objectClass>
-                    <name>Path</name>
-                    <sharing>PublishSubscribe</sharing>
-                    <semantics>A path is defiend as a sequence of at least two locations. Each location in the path is defined geodetic coordinates and altitude above the mean sea level.</semantics>
-                    <attribute>
-                        <name>Points</name>
-                        <dataType>GeodeticPath</dataType>
-                        <updateType>Conditional</updateType>
-                        <updateCondition>When Changed</updateCondition>
-                        <ownership>DivestAcquire</ownership>
-                        <sharing>PublishSubscribe</sharing>
-                        <transportation>HLAreliable</transportation>
-                        <order>Receive</order>
-                        <semantics>Required. A path with at least 2 points expressed as GeodeticPoints.</semantics>
-                    </attribute>
-                </objectClass>
-                <objectClass>
-                    <name>Region</name>
-                    <sharing>PublishSubscribe</sharing>
-                    <semantics>A region is an area on the earth's surface defined by a polygon or a circle.</semantics>
-                    <attribute>
-                        <name>Area</name>
-                        <dataType>AreaVariantStruct</dataType>
-                        <updateType>Conditional</updateType>
-                        <updateCondition>When Changed</updateCondition>
-                        <ownership>DivestAcquire</ownership>
-                        <sharing>PublishSubscribe</sharing>
-                        <transportation>HLAreliable</transportation>
-                        <order>Receive</order>
-                        <semantics>Required. Defines the area, either as a geodetic polygon, circle or quadrangle.</semantics>
-                    </attribute>
-                </objectClass>
-            </objectClass>
-            <objectClass>
-                <name>SE_Facility</name>
-                <sharing>PublishSubscribe</sharing>
-                <semantics>Base class for NETN Syntetic Environment object classes.</semantics>
-                <attribute>
-                    <name>LocationReference</name>
-                    <dataType>GeoLocationReferenceVariant</dataType>
-                    <updateType>Static</updateType>
-                    <updateCondition>Initial</updateCondition>
-                    <ownership>DivestAcquire</ownership>
-                    <sharing>PublishSubscribe</sharing>
-                    <transportation>HLAreliable</transportation>
-                    <order>Receive</order>
-                    <semantics>Required. A reference that identifies a geographical location directly or indirectly by reference to a simulated object.</semantics>
-                </attribute>
-                <attribute>
-                    <name>Name</name>
-                    <dataType>HLAunicodeString</dataType>
-                    <updateType>Static</updateType>
-                    <updateCondition>NA</updateCondition>
-                    <ownership>NoTransfer</ownership>
-                    <sharing>PublishSubscribe</sharing>
-                    <transportation>HLAreliable</transportation>
-                    <order>Receive</order>
-                    <semantics>Optional. Name of the facility.</semantics>
-                </attribute>
                 <attribute>
                     <name>SymbolId</name>
                     <dataType>SymbolIdentifier</dataType>
-                    <updateType>Static</updateType>
-                    <updateCondition>NA</updateCondition>
-                    <ownership>DivestAcquire</ownership>
+                    <updateType>NA</updateType>
+                    <updateCondition></updateCondition>
+                    <ownership>NoTransfer</ownership>
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
@@ -147,42 +72,20 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                 <attribute>
                     <name>Status</name>
                     <dataType>ActiveStatusEnum8</dataType>
-                    <updateType>Conditional</updateType>
-                    <updateCondition>On change</updateCondition>
-                    <ownership>DivestAcquire</ownership>
+                    <updateType>NA</updateType>
+                    <updateCondition></updateCondition>
+                    <ownership>NoTransfer</ownership>
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
                     <semantics>Optional. Specifies if the facility is active (operational) or not. Default value is 1 (Active).</semantics>
                 </attribute>
                 <attribute>
-                    <name>ObjectType</name>
-                    <dataType>EnvironmentObjectTypeStruct</dataType>
-                    <updateType>Static</updateType>
-                    <updateCondition>Initial</updateCondition>
-                    <ownership>NoTransfer</ownership>
-                    <sharing>PublishSubscribe</sharing>
-                    <transportation>HLAreliable</transportation>
-                    <order>Receive</order>
-                    <semantics>Optional. Specifying the domain, the kind and the specific identification of the environment object.</semantics>
-                </attribute>
-                <attribute>
-                    <name>ForceId</name>
-                    <dataType>ForceIdentifierEnum8</dataType>
-                    <updateType>Conditional</updateType>
-                    <updateCondition>On Change</updateCondition>
-                    <ownership>DivestAcquire</ownership>
-                    <sharing>PublishSubscribe</sharing>
-                    <transportation>HLAreliable</transportation>
-                    <order>Receive</order>
-                    <semantics>Optional. The force that operates the facility. Default is 0 (Other).</semantics>
-                </attribute>
-                <attribute>
                     <name>PercentComplete</name>
                     <dataType>PercentFloat32</dataType>
-                    <updateType>Conditional</updateType>
-                    <updateCondition>When Changed</updateCondition>
-                    <ownership>DivestAcquire</ownership>
+                    <updateType>NA</updateType>
+                    <updateCondition></updateCondition>
+                    <ownership>NoTransfer</ownership>
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
@@ -190,10 +93,10 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                 </attribute>
                 <attribute>
                     <name>DamageState</name>
-                    <dataType>DamageStatusEnum32</dataType>
-                    <updateType>Conditional</updateType>
-                    <updateCondition>On Change</updateCondition>
-                    <ownership>DivestAcquire</ownership>
+                    <dataType>DamageStatusEnhancedEnum32</dataType>
+                    <updateType>NA</updateType>
+                    <updateCondition></updateCondition>
+                    <ownership>NoTransfer</ownership>
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
@@ -202,30 +105,94 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                 <attribute>
                     <name>Comment</name>
                     <dataType>HLAunicodeString</dataType>
-                    <updateType>Conditional</updateType>
-                    <updateCondition>When Changed</updateCondition>
+                    <updateType>NA</updateType>
+                    <updateCondition></updateCondition>
                     <ownership>NoTransfer</ownership>
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
                     <semantics>Optional. A descriptive text comment.</semantics>
                 </attribute>
-                <objectClass>
-                    <name>CheckPoint</name>
+                <attribute>
+                    <name>OwningApplication</name>
+                    <dataType>UUID</dataType>
+                    <updateType>NA</updateType>
+                    <updateCondition></updateCondition>
+                    <ownership>NoTransfer</ownership>
                     <sharing>PublishSubscribe</sharing>
-                    <semantics>A checkpoint defines a location where simulated aggregate and physical entities should stop and wait a specified time before continuing on their route. 
-If the checkpoint is currently in operation the status attribute should be set to true. A system simulating movement of physical or aggregate entities can be either directly affected by the checkpoint by subscribing to its state or indirectly by receiving an NETN-ETR `Wait` task.</semantics>
+                    <transportation>HLAreliable</transportation>
+                    <order>Receive</order>
+                    <semantics>Required when using NETN-ORG classes; otherwise, must not be used. The ID of the application that is mainly responsible for simulating this instance. Corresponds to the UniqueId attribute of a FederateApplication instance.</semantics>
+                </attribute>
+                <attribute>
+                    <name>HostObject</name>
+                    <dataType>UUID</dataType>
+                    <updateType>NA</updateType>
+                    <updateCondition></updateCondition>
+                    <ownership>NoTransfer</ownership>
+                    <sharing>PublishSubscribe</sharing>
+                    <transportation>HLAreliable</transportation>
+                    <order>Receive</order>
+                    <semantics>Required when using Breach/Burst objects. The unique ID of host object. </semantics>
+                </attribute>
+                <objectClass>
+                    <name>PointObject</name>
+                    <objectClass>
+                        <name>Checkpoint</name>
+                        <sharing>Neither</sharing>
+                        <semantics></semantics>
+                        <attribute>
+                            <name>DelayTime</name>
+                            <dataType>TimeSecondInteger32</dataType>
+                            <updateType>NA</updateType>
+                            <updateCondition></updateCondition>
+                            <ownership>NoTransfer</ownership>
+                            <sharing>PublishSubscribe</sharing>
+                            <transportation>HLAreliable</transportation>
+                            <order>Receive</order>
+                            <semantics></semantics>
+                        </attribute>
+                    </objectClass>
+                </objectClass>
+                <objectClass>
+                    <name>LinearObject</name>
+                    <sharing>Subscribe</sharing>
+                    <semantics>A synthetic environment object that has size and an orientation and is geometrically anchored to the terrain with one point.</semantics>
                     <attribute>
-                        <name>DelayTime</name>
-                        <dataType>TimeSecondInteger32</dataType>
-                        <updateType>Conditional</updateType>
-                        <updateCondition>On change</updateCondition>
-                        <ownership>DivestAcquire</ownership>
+                        <name>Points</name>
+                        <dataType>ArrayOfWorldLocationStruct</dataType>
+                        <updateType>NA</updateType>
+                        <updateCondition></updateCondition>
+                        <ownership>NoTransfer</ownership>
                         <sharing>PublishSubscribe</sharing>
                         <transportation>HLAreliable</transportation>
                         <order>Receive</order>
-                        <semantics>Required. The time that an entity shall wait at the checkpoint before passing. The time is a nominal value; federates can use this for modifying delay time for different types of entities, e.g. add or subtract a value or multiply with a type depending factor.</semantics>
+                        <semantics>Required. A path with at least 2 points expressed as GeodeticPoints.</semantics>
                     </attribute>
+                </objectClass>
+                <objectClass>
+                    <name>ArealObject</name>
+                    <objectClass>
+                        <name>ArealBreach</name>
+                        <sharing>Neither</sharing>
+                        <semantics></semantics>
+                    </objectClass>
+                    <objectClass>
+                        <name>Minefield</name>
+                        <sharing>Neither</sharing>
+                        <semantics></semantics>
+                        <attribute>
+                            <name>Density</name>
+                            <dataType>QuantityFloat32</dataType>
+                            <updateType>NA</updateType>
+                            <updateCondition></updateCondition>
+                            <ownership>NoTransfer</ownership>
+                            <sharing>PublishSubscribe</sharing>
+                            <transportation>HLAreliable</transportation>
+                            <order>Receive</order>
+                            <semantics>Required. Number of mines per hectare (ha). (1 ha = 10000 m2 = 2.4711 acres)</semantics>
+                        </attribute>
+                    </objectClass>
                 </objectClass>
             </objectClass>
         </objectClass>
