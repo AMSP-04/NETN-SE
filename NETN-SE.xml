@@ -114,17 +114,6 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <semantics>Optional. A descriptive text comment.</semantics>
                 </attribute>
                 <attribute>
-                    <name>OwningApplication</name>
-                    <dataType>UUID</dataType>
-                    <updateType>NA</updateType>
-                    <updateCondition></updateCondition>
-                    <ownership>NoTransfer</ownership>
-                    <sharing>PublishSubscribe</sharing>
-                    <transportation>HLAreliable</transportation>
-                    <order>Receive</order>
-                    <semantics>Required when using NETN-ORG classes; otherwise, must not be used. The ID of the application that is mainly responsible for simulating this instance. Corresponds to the UniqueId attribute of a FederateApplication instance.</semantics>
-                </attribute>
-                <attribute>
                     <name>HostObject</name>
                     <dataType>UUID</dataType>
                     <updateType>NA</updateType>
@@ -133,10 +122,23 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>Required when using Breach/Burst objects. The unique ID of host object. </semantics>
+                    <semantics>Required when using Breach/Burst objects. The unique ID of host object.</semantics>
                 </attribute>
                 <objectClass>
                     <name>PointObject</name>
+                    <sharing>Subscribe</sharing>
+                    <semantics>A synthetic environment object that is geometrically anchored to the terrain with a single point.</semantics>
+                    <attribute>
+                        <name>Radius</name>
+                        <dataType>MeterFloat64</dataType>
+                        <updateType>NA</updateType>
+                        <updateCondition></updateCondition>
+                        <ownership>NoTransfer</ownership>
+                        <sharing>PublishSubscribe</sharing>
+                        <transportation>HLAreliable</transportation>
+                        <order>Receive</order>
+                        <semantics>Optional. Radius of point object.</semantics>
+                    </attribute>
                     <objectClass>
                         <name>Checkpoint</name>
                         <sharing>Neither</sharing>
