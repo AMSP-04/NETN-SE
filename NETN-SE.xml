@@ -145,7 +145,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                         <semantics></semantics>
                         <attribute>
                             <name>DelayTime</name>
-                            <dataType>TimeSecondInteger32</dataType>
+                            <dataType>TimeMillisecondInt64</dataType>
                             <updateType>NA</updateType>
                             <updateCondition></updateCondition>
                             <ownership>NoTransfer</ownership>
@@ -162,7 +162,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <semantics>A synthetic environment object that has size and an orientation and is geometrically anchored to the terrain with one point.</semantics>
                     <attribute>
                         <name>Points</name>
-                        <dataType>ArrayOfWorldLocationStruct</dataType>
+                        <dataType>WorldLocationPath</dataType>
                         <updateType>NA</updateType>
                         <updateCondition></updateCondition>
                         <ownership>NoTransfer</ownership>
