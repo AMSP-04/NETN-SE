@@ -3,16 +3,25 @@
     <modelIdentification>
         <name>NETN-SE</name>
         <type>FOM</type>
-        <version>1.0</version>
-        <modificationDate>2020-09-04</modificationDate>
+        <version>2.0</version>
+        <modificationDate>2023-03-30</modificationDate>
         <securityClassification>Not Classified</securityClassification>
-        <purpose>Define synthetic environment objects in a HLA Federation Execution.</purpose>
+        <purpose>The purpose of the NATO Education and Training Network Synthetic Environment Module (NETN-SE) is to provide a standard way to exchange simulation data for objects in the synthetic environment other than entities such as Units or Platforms.</purpose>
         <applicationDomain>Simulation, Training</applicationDomain>
-        <description>New definitions of Geo Objects, does not depend on RPR_v2 SE-FOM.
+        <description>The specification is based on IEEE 1516 High Level Architecture (HLA) Object Model Template (OMT) and is primarily intended to support interoperability in a federated simulation (federation) based on HLA. A Federation Object Model (FOM) Module is used to specify how data is represented and exchanged in the federation. The NETN-ORG FOM module is available as an XML file for use in HLA-based federations.</description>
+        <useLimitation>NETN-SE extends the RPR-SE concerning:
 
-A NETN_Facility object class to define facilities for different services.</description>
-        <useLimitation></useLimitation>
-        <useHistory>v1.0.0 - First version.</useHistory>
+* Checkpoints
+* Minefields and generic obstacles
+* Breaches of minefields and generic obstacles</useLimitation>
+        <useHistory>v1.0 - Developed by MSG-163 for NETN FOM v3.0</useHistory>
+        <useHistory notes="netn-se_1">v2.0 - Developed by MSG-191 for NATO FOM v4.0</useHistory>
+        <poc>
+            <pocType>Release authority</pocType>
+            <pocName>NATO Modelling and Simulation Group</pocName>
+            <pocOrg>NATO Science and Technology Organization</pocOrg>
+            <pocEmail>msg@cso.nato.int</pocEmail>
+        </poc>
         <poc>
             <pocType>Primary author</pocType>
             <pocName>MSG-163 Evolution of NATO Standards for Federated Simulation</pocName>
@@ -20,9 +29,9 @@ A NETN_Facility object class to define facilities for different services.</descr
             <pocEmail>msg@cso.nato.int</pocEmail>
         </poc>
         <poc>
-            <pocType>Release authority</pocType>
-            <pocName>NATO Modelling and Simulation Group</pocName>
-            <pocOrg>NATO Science and Technology Organization</pocOrg>
+            <pocType>Primary author</pocType>
+            <pocName>MSG-191 NATO Standards for Federated Simulation and Services for Integration, Verification and Certification</pocName>
+            <pocOrg>NATO Modelling and Simulation Group</pocOrg>
             <pocEmail>msg@cso.nato.int</pocEmail>
         </poc>
         <reference>
@@ -51,18 +60,18 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <name>Name</name>
                     <dataType>HLAunicodeString</dataType>
                     <updateType>NA</updateType>
-                    <updateCondition></updateCondition>
+                    <updateCondition>On change</updateCondition>
                     <ownership>NoTransfer</ownership>
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>Optional. Name of the GeoObject, e.g. Location name, Road name etc.</semantics>
+                    <semantics>Optional. Name of the EnvironmentObject.</semantics>
                 </attribute>
                 <attribute>
                     <name>SymbolId</name>
                     <dataType>SymbolIdentifier</dataType>
-                    <updateType>NA</updateType>
-                    <updateCondition></updateCondition>
+                    <updateType>Conditional</updateType>
+                    <updateCondition>On change</updateCondition>
                     <ownership>NoTransfer</ownership>
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
@@ -72,41 +81,30 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                 <attribute>
                     <name>Status</name>
                     <dataType>ActiveStatusEnum8</dataType>
-                    <updateType>NA</updateType>
-                    <updateCondition></updateCondition>
+                    <updateType>Conditional</updateType>
+                    <updateCondition>On change</updateCondition>
                     <ownership>NoTransfer</ownership>
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>Optional. Specifies if the facility is active (operational) or not. Default value is 1 (Active).</semantics>
-                </attribute>
-                <attribute>
-                    <name>PercentComplete</name>
-                    <dataType>PercentFloat32</dataType>
-                    <updateType>NA</updateType>
-                    <updateCondition></updateCondition>
-                    <ownership>NoTransfer</ownership>
-                    <sharing>PublishSubscribe</sharing>
-                    <transportation>HLAreliable</transportation>
-                    <order>Receive</order>
-                    <semantics>Optional. Describes a level of completion when establishing/building of the facility. Expressed in percent [0-100]. Default is 100%.</semantics>
+                    <semantics>Optional. Specifies if the EnvironmentObject is considered active in the simulation. Inactive object should not affect other simulation models. Default value is 1 (Active).</semantics>
                 </attribute>
                 <attribute>
                     <name>DamageState</name>
                     <dataType>DamageStatusEnhancedEnum32</dataType>
                     <updateType>NA</updateType>
-                    <updateCondition></updateCondition>
+                    <updateCondition>On change</updateCondition>
                     <ownership>NoTransfer</ownership>
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>Optional. The damage state on the facility. Default value is 0 (NoDamage).</semantics>
+                    <semantics>Optional. The damage state of an EnvironmentObject. Default value is 0 (NoDamage).</semantics>
                 </attribute>
                 <attribute>
                     <name>Comment</name>
                     <dataType>HLAunicodeString</dataType>
                     <updateType>NA</updateType>
-                    <updateCondition></updateCondition>
+                    <updateCondition>On change</updateCondition>
                     <ownership>NoTransfer</ownership>
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
@@ -117,7 +115,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <name>HostObject</name>
                     <dataType>UUID</dataType>
                     <updateType>NA</updateType>
-                    <updateCondition></updateCondition>
+                    <updateCondition>On change</updateCondition>
                     <ownership>NoTransfer</ownership>
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
@@ -132,8 +130,8 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                         <name>Radius</name>
                         <dataType>MeterFloat64</dataType>
                         <updateType>NA</updateType>
-                        <updateCondition></updateCondition>
-                        <ownership>NoTransfer</ownership>
+                        <updateCondition>On chage</updateCondition>
+                        <ownership>DivestAcquire</ownership>
                         <sharing>PublishSubscribe</sharing>
                         <transportation>HLAreliable</transportation>
                         <order>Receive</order>
@@ -141,18 +139,18 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     </attribute>
                     <objectClass>
                         <name>Checkpoint</name>
-                        <sharing>Neither</sharing>
-                        <semantics></semantics>
+                        <sharing>PublishSubscribe</sharing>
+                        <semantics>A CheckPoint defines a location where simulated entities' ground movement should stop and wait a specified time before continuing on their route.</semantics>
                         <attribute>
                             <name>DelayTime</name>
                             <dataType>TimeMillisecondInt64</dataType>
                             <updateType>NA</updateType>
-                            <updateCondition></updateCondition>
+                            <updateCondition>On change</updateCondition>
                             <ownership>NoTransfer</ownership>
                             <sharing>PublishSubscribe</sharing>
                             <transportation>HLAreliable</transportation>
                             <order>Receive</order>
-                            <semantics></semantics>
+                            <semantics>Required. The time that an entity shall wait at the checkpoint before passing. The time is a nominal value; federates can use this for modifying delay time for different types of entities, e.g. add or subtract a value or multiply with a type depending factor.</semantics>
                         </attribute>
                     </objectClass>
                 </objectClass>
@@ -164,30 +162,30 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                         <name>Points</name>
                         <dataType>WorldLocationPath</dataType>
                         <updateType>NA</updateType>
-                        <updateCondition></updateCondition>
+                        <updateCondition>On change</updateCondition>
                         <ownership>NoTransfer</ownership>
                         <sharing>PublishSubscribe</sharing>
                         <transportation>HLAreliable</transportation>
                         <order>Receive</order>
-                        <semantics>Required. A path with at least 2 points expressed as GeodeticPoints.</semantics>
+                        <semantics>Required. A path with at least 2 points expressed as WorldLocations.</semantics>
                     </attribute>
                 </objectClass>
                 <objectClass>
                     <name>ArealObject</name>
                     <objectClass>
                         <name>ArealBreach</name>
-                        <sharing>Neither</sharing>
-                        <semantics></semantics>
+                        <sharing>PublishSubscribe</sharing>
+                        <semantics>An area within an obstacle that has been cleared and now allows for the movement of simulated entities.</semantics>
                     </objectClass>
                     <objectClass>
                         <name>Minefield</name>
-                        <sharing>Neither</sharing>
-                        <semantics></semantics>
+                        <sharing>PublishSubscribe</sharing>
+                        <semantics>An obstacle with a density of mines used to prevent the movement of other forces.</semantics>
                         <attribute>
                             <name>Density</name>
                             <dataType>QuantityFloat32</dataType>
                             <updateType>NA</updateType>
-                            <updateCondition></updateCondition>
+                            <updateCondition>On change</updateCondition>
                             <ownership>NoTransfer</ownership>
                             <sharing>PublishSubscribe</sharing>
                             <transportation>HLAreliable</transportation>
@@ -199,59 +197,25 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
             </objectClass>
         </objectClass>
     </objects>
-    <dataTypes>
-        <simpleDataTypes/>
-        <enumeratedDataTypes/>
-        <arrayDataTypes/>
-        <fixedRecordDataTypes/>
-        <variantRecordDataTypes>
-            <variantRecordData>
-                <name>GeoLocationReferenceVariant</name>
-                <discriminant>GeoReferenceType</discriminant>
-                <dataType>GeoLocationTypeEnum32</dataType>
-                <alternative>
-                    <enumerator>Point</enumerator>
-                    <name>GeodeticLocation</name>
-                    <dataType>GeodeticLocation</dataType>
-                    <semantics>A location on the surface of the earth defined by lat, lon WGS84.</semantics>
-                </alternative>
-                <alternative>
-                    <enumerator>Circle</enumerator>
-                    <name>GeodeticCircle</name>
-                    <dataType>GeodeticCircle</dataType>
-                    <semantics>A geodetic point and radius specifying a circle on the surface of the earth WGS84 where the radius is a great circle distance on the surface.</semantics>
-                </alternative>
-                <alternative>
-                    <enumerator>Quadrangle</enumerator>
-                    <name>GeodeticQuadrangle</name>
-                    <dataType>GeodeticQuadrangle</dataType>
-                    <semantics>A latitude-longitude quadrangle is a region bounded by two meridians and two parallels.</semantics>
-                </alternative>
-                <alternative>
-                    <enumerator>Polygon</enumerator>
-                    <name>GeodeticPolygon</name>
-                    <dataType>GeodeticPolygon</dataType>
-                    <semantics>A polygon on the surface of the earth defined by a number of great-circle arcs represented as lat, lon Locations. WGS84.</semantics>
-                </alternative>
-                <alternative>
-                    <enumerator>NETN_UUID</enumerator>
-                    <name>NETNGeoObjectReference</name>
-                    <dataType>UUID</dataType>
-                    <semantics>Reference to an object instance of class Location, Path or Region, defined in NETN-SE FOM Module or a NETN Physical or Aggregate entity with UUID.</semantics>
-                </alternative>
-                <alternative>
-                    <enumerator>RPR_Entity</enumerator>
-                    <name>RPREntityReference</name>
-                    <dataType>EntityIdentifierStruct</dataType>
-                    <semantics>Reference to an instance of a leaf node subclass of RPR-FOM BaseEntity by its EntityIdentifier. E.g. an Aircraft, SurfaceVessel etc.</semantics>
-                </alternative>
-                <encoding>HLAvariantRecord</encoding>
-                <semantics>The area affected by an Environment Condition can be expressed as: 
-- a location on the earth's surface represented by a Point, 
-- an area on the earth's surface, represented by a Quadrangle, GeodeticPolygon, or GeodeticCircle, or 
-- a reference to some other object/data. Objects that can be referenced are RPR entities, NETN entities, NETN-SE GeoObjects and GML Features.</semantics>
-            </variantRecordData>
-        </variantRecordDataTypes>
-    </dataTypes>
-    <notes/>
+    <notes>
+        <note>
+            <label>netn-se_1</label>
+            <semantics>* Major harmonization with RPR-FOM SE module 
+* Removed datatype GeoLocationReferenceVariant 
+* Removed object class `Facility` 
+** `Facility` attribute `UniqueId` moved to NETN-BASE `HLAobjectRoot` 
+** `Facility` attribute `LocationReference` replaced by similar RPR-SE attributes on relevant subclasses of `EnvironmentObject` 
+** `Facility` attribute `PercentComplete` replaced by similar RPR-SE attribute on relevant subclasses of `EnvironmentObject` 
+** `Facility` attribute `ForceId` and `ObjectType` replaced by similar RPR-SE attribute on `EnvironmentObject` object class 
+** `Facility` attribute `Name`, `SymbolId`, `DamageState`, `Comment` and `Status` moved to `EnvironmentObject 
+* Attribute `HostObject` added to `EnvironmentObject` object class. 
+* Changed superclass of object class `Checkpoint` to `PointObject` 
+* Replaced object class `SE_GeoObject`, `Location`, `Path` and `Region` and associated attributes with `PointObject`, `LinearObject` and `ArealObject` object classes 
+* Added attribute `Radius` to `PointObject` object class 
+* Added attribute `Points` to `LinearObject` object class 
+* Added attribute `Delayime` to `Checkpoint` object class 
+* Added object class `ArealBreach` and `Minefield` as subclasses of `ArealObject` object class 
+* Added attribute `Density` to `Minefield` object class</semantics>
+        </note>
+    </notes>
 </objectModel>
