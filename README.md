@@ -3,7 +3,7 @@
 
 |Version| Date| Dependencies|
 |---|---|---|
-|2.0|2023-03-30|NETN-BASE, RPR-SE|
+|2.0|2023-03-30|RPR-SE, NETN-ETR|
 
 > [Full Documentation](NETN-SE.md)
 
@@ -13,9 +13,9 @@ The specification is based on IEEE 1516 High Level Architecture (HLA) Object Mod
 
 NETN-SE extends the RPR-SE concerning:
 
-- Checkpoints
-- Minefields and generic obstacles
-- Breaches of minefields and generic obstacles
+* Checkpoints
+* Minefields and generic obstacles
+* Breaches of minefields and generic obstacles
 
 ## License
 

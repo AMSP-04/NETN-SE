@@ -6,20 +6,38 @@
 
 ### v2.0 - Developed by MSG-191 for NATO FOM v4.0
 
-* Major harmonization with RPR-FOM SE module
-* Removed datatype GeoLocationReferenceVariant
-* Removed object class `Facility`
-** `Facility` attribute `UniqueId` moved to NETN-BASE `HLAobjectRoot`
-** `Facility` attribute `LocationReference` replaced by similar RPR-SE attributes on relevant subclasses of `EnvironmentObject`
-** `Facility` attribute `PercentComplete` replaced by similar RPR-SE attribute on relevant subclasses of `EnvironmentObject`
-** `Facility` attribute `ForceId` and `ObjectType` replaced by similar RPR-SE attribute on `EnvironmentObject` object class
-** `Facility` attribute `Name`, `SymbolId`, `DamageState`, `Comment` and `Status` moved to `EnvironmentObject
-* Attribute `HostObject` added to `EnvironmentObject` object class.
-* Changed superclass of object class `Checkpoint` to `PointObject`
-* Replaced object class `SE_GeoObject`, `Location`, `Path` and `Region` and associated attributes with `PointObject`, `LinearObject` and `ArealObject` object classes
-* Added attribute `Radius` to `PointObject` object class
-* Added attribute `Points` to `LinearObject` object class
-* Added attribute `Delayime` to `Checkpoint` object class
-* Added object class `ArealBreach` and `Minefield` as subclasses of `ArealObject` object class
-* Added attribute `Density` to `Minefield` object class
+* Replaced object class `SE_GeoObject` with `EnvironmentObject`
+* Replaced object class `Location` with `PointObject`
+* Replaced object class `Path` with `LinearObject`
+* Replaced object class `Region` with `ArealObject`
+* Moved `SE_Facility` attributes `Name`, `SymbolId`, `DamageState`, `Comment` and `Status` moved to `EnvironmentObject`
+* Removed object class `SE_Facility`
+* Replaced object class `CheckPoint` with `Checkpoint` as subclass to `PointObject`
+* Added `PointObject` attribute `Radius`
+* Added `LinearObject` attribute `Points`
+* Added `EnvironmentObject` attribute `HostObject`
+* Added object class `ArealBreach`
+* Added object class `Minefield`
+
+* Added interaction class `CreateBreach` 
+* Added interaction class `EstablishCheckpoint` 
+* Added interaction class `LayMinefield` 
+* Added interaction class `CreateObstacle` 
+* Added interaction class `ClearEngineering` 
+
+* Removed datatype `GeoLocationReferenceVariant`
+* Added datatype `TaskTypeEnum`
+* Added datatype `EngineeringTaskStruct`
+* Added datatype `LayMinefieldTaskStruct`
+* Added datatype `ClearEngineeringTaskStruct`
+* Added datatype `CreateBreachTaskStruct`
+* Added datatype `EstablishCheckpointTaskStruct`
+* Added datatype `CreateObstacleTaskStruct`
+* Added datatype `TaskDefinitionVariantStruct`
+* Added datatype `TaskProgressVariantStruct`
+
+
+
+
+
 
