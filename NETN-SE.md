@@ -4,15 +4,13 @@
 |---|---|---|
 |2.0|2023-03-30|RPR-SE, NETN-ETR|
 
-The purpose of the NATO Education and Training Network Synthetic Environment Module (NETN-SE) is to provide a standard way to exchange simulation data for objects in the synthetic environment other than entities such as Units or Platforms.
+The purpose of the NATO Education and Training Network Synthetic Environment Module (NETN-SE) is to provide a standard way to exchange simulation data for objects in the synthetic environment other than simulated entities such as `Platform` or `AggregateEntity` objects.
 
-The specification is based on IEEE 1516 High Level Architecture (HLA) Object Model Template (OMT) and is primarily intended to support interoperability in a federated simulation (federation) based on HLA. A Federation Object Model (FOM) Module is used to specify how data is represented and exchanged in the federation. The NETN-ORG FOM module is available as an XML file for use in HLA-based federations.
+The specification is based on IEEE 1516 High Level Architecture (HLA) Object Model Template (OMT) and supports interoperability in a federated simulation (federation) based on HLA.
 
-NETN-SE extends the RPR-SE concerning:
-
+NETN-SE defines:
 * Checkpoints
-* Minefields and generic obstacles
-* Breaches of minefields and generic obstacles
+* Areal breaches of minefields and generic obstacles
 
 
 ## Object Classes
@@ -27,7 +25,6 @@ LinearObject-->EnvironmentObject
 ArealObject-->EnvironmentObject
 Checkpoint-->PointObject
 ArealBreach-->ArealObject
-Minefield-->ArealObject
 ```
 
 ### EnvironmentObject
@@ -57,7 +54,7 @@ A CheckPoint defines a location where simulated entities' ground movement should
 
 |Attribute|Datatype|Semantics|
 |---|---|---|
-|DelayTime|TimeMillisecondInt64|Required. The time that an entity shall wait at the checkpoint before passing. The time is a nominal value; federates can use this for modifying delay time for different types of entities, e.g. add or subtract a value or multiply with a factor dependent on the simulation entity type.|
+|DelayTime|TimeMillisecondInt64|Required. The time that an entity shall wait at the checkpoint before passing. The time is a nominal value; models can use this for modifying delay time for different types of entities, e.g. add or subtract a value or multiply with a factor dependent on the simulation entity type.|
 
 ### LinearObject
 
@@ -71,14 +68,6 @@ A synthetic environment object that has size and an orientation and is geometric
 
 A cleared area within an obstacle allows simulated entities to move through the obstacle.
 
-
-### Minefield
-
-An obstacle with mines used to prevent other forces' movement.
-
-|Attribute|Datatype|Semantics|
-|---|---|---|
-|Density|QuantityFloat32|Required. Number of mines per hectare (ha). (1 ha = 10000 m2 = 2.4711 acres)|
 
 ## Interaction Classes
 
@@ -129,7 +118,7 @@ Requests a simulated entity to create an obstacle within the given area. The tas
 
 ### ClearEngineering
 
-Requests a simulated entity to clear/remove an engineering object. The clearing activity's duration depends on the task entity's model, but an explicit duration can be provided.
+Requests a simulated entity to clear/remove an engineering object. The clearing activity's duration may depend on the entity's model.
 
 |Parameter|Datatype|Semantics|
 |---|---|---|

@@ -6,14 +6,12 @@
         <version>2.0</version>
         <modificationDate>2023-03-30</modificationDate>
         <securityClassification>Not Classified</securityClassification>
-        <purpose>The purpose of the NATO Education and Training Network Synthetic Environment Module (NETN-SE) is to provide a standard way to exchange simulation data for objects in the synthetic environment other than entities such as Units or Platforms.</purpose>
+        <purpose>The purpose of the NATO Education and Training Network Synthetic Environment Module (NETN-SE) is to provide a standard way to exchange simulation data for objects in the synthetic environment other than simulated entities such as `Platform` or `AggregateEntity` objects.</purpose>
         <applicationDomain>Simulation, Training</applicationDomain>
-        <description>The specification is based on IEEE 1516 High Level Architecture (HLA) Object Model Template (OMT) and is primarily intended to support interoperability in a federated simulation (federation) based on HLA. A Federation Object Model (FOM) Module is used to specify how data is represented and exchanged in the federation. The NETN-ORG FOM module is available as an XML file for use in HLA-based federations.</description>
-        <useLimitation>NETN-SE extends the RPR-SE concerning:
-
+        <description>The specification is based on IEEE 1516 High Level Architecture (HLA) Object Model Template (OMT) and supports interoperability in a federated simulation (federation) based on HLA.</description>
+        <useLimitation>NETN-SE defines:
 * Checkpoints
-* Minefields and generic obstacles
-* Breaches of minefields and generic obstacles</useLimitation>
+* Areal breaches of minefields and generic obstacles</useLimitation>
         <useHistory>v1.0 - Developed by MSG-163 for NETN FOM v3.0</useHistory>
         <useHistory notes="netn-se_1">v2.0 - Developed by MSG-191 for NATO FOM v4.0</useHistory>
         <poc>
@@ -150,7 +148,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                             <sharing>PublishSubscribe</sharing>
                             <transportation>HLAreliable</transportation>
                             <order>Receive</order>
-                            <semantics>Required. The time that an entity shall wait at the checkpoint before passing. The time is a nominal value; federates can use this for modifying delay time for different types of entities, e.g. add or subtract a value or multiply with a factor dependent on the simulation entity type.</semantics>
+                            <semantics>Required. The time that an entity shall wait at the checkpoint before passing. The time is a nominal value; models can use this for modifying delay time for different types of entities, e.g. add or subtract a value or multiply with a factor dependent on the simulation entity type.</semantics>
                         </attribute>
                     </objectClass>
                 </objectClass>
@@ -241,7 +239,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                         <sharing>PublishSubscribe</sharing>
                         <transportation>HLAreliable</transportation>
                         <order>Receive</order>
-                        <semantics>Requests a simulated entity to clear/remove an engineering object. The clearing activity's duration depends on the task entity's model, but an explicit duration can be provided.</semantics>
+                        <semantics>Requests a simulated entity to clear/remove an engineering object. The clearing activity's duration may depend on the entity's model.</semantics>
                         <parameter>
                             <name>TaskParameters</name>
                             <dataType>ClearEngineeringTaskStruct</dataType>
