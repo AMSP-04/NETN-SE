@@ -12,8 +12,8 @@ The purpose of the NATO Education and Training Network Synthetic Environment Mod
 The specification is based on IEEE 1516 High Level Architecture (HLA) Object Model Template (OMT) and supports interoperability in a federated simulation (federation) based on HLA.
 
 NETN-SE defines:
-* Checkpoints
-* Areal breaches of minefields and generic obstacles
+* Establishing and representing checkpoints
+* Laying and breaching minefields and generic obstacles
 
 ## License
 
