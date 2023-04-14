@@ -177,22 +177,6 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                         <sharing>PublishSubscribe</sharing>
                         <semantics>A cleared area within an obstacle allows simulated entities to move through the obstacle.</semantics>
                     </objectClass>
-                    <objectClass>
-                        <name>Minefield</name>
-                        <sharing>PublishSubscribe</sharing>
-                        <semantics>An obstacle with mines used to prevent other forces' movement.</semantics>
-                        <attribute>
-                            <name>Density</name>
-                            <dataType>QuantityFloat32</dataType>
-                            <updateType>NA</updateType>
-                            <updateCondition>On change</updateCondition>
-                            <ownership>NoTransfer</ownership>
-                            <sharing>PublishSubscribe</sharing>
-                            <transportation>HLAreliable</transportation>
-                            <order>Receive</order>
-                            <semantics>Required. Number of mines per hectare (ha). (1 ha = 10000 m2 = 2.4711 acres)</semantics>
-                        </attribute>
-                    </objectClass>
                 </objectClass>
             </objectClass>
         </objectClass>
@@ -474,34 +458,34 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
     <notes>
         <note>
             <label>netn-se_1</label>
-            <semantics>* Replaced object class `SE_GeoObject` with `EnvironmentObject`
-* Replaced object class `Location` with `PointObject`
-* Replaced object class `Path` with `LinearObject`
-* Replaced object class `Region` with `ArealObject`
-* Moved `SE_Facility` attributes `Name`, `SymbolId`, `DamageState`, `Comment` and `Status` moved to `EnvironmentObject`
-* Removed object class `SE_Facility`
-* Replaced object class `CheckPoint` with `Checkpoint` as subclass to `PointObject`
-* Added `PointObject` attribute `Radius`
-* Added `LinearObject` attribute `Points`
-* Added `EnvironmentObject` attribute `HostObject`
-* Added object class `ArealBreach`
-* Added object class `Minefield`
+            <semantics>* Replaced object class `SE_GeoObject` with `EnvironmentObject` 
+* Replaced object class `Location` with `PointObject` 
+* Replaced object class `Path` with `LinearObject` 
+* Replaced object class `Region` with `ArealObject` 
+* Moved `SE_Facility` attributes `Name`, `SymbolId`, `DamageState`, `Comment` and `Status` moved to `EnvironmentObject` 
+* Removed object class `SE_Facility` 
+* Replaced object class `CheckPoint` with `Checkpoint` as subclass to `PointObject` 
+* Added `PointObject` attribute `Radius` 
+* Added `LinearObject` attribute `Points` 
+* Added `EnvironmentObject` attribute `HostObject` 
+* Added object class `ArealBreach` 
 
+ 
 * Added interaction class `CreateBreach` 
 * Added interaction class `EstablishCheckpoint` 
 * Added interaction class `LayMinefield` 
 * Added interaction class `CreateObstacle` 
 * Added interaction class `ClearEngineering` 
-
-* Removed datatype `GeoLocationReferenceVariant`
-* Added datatype `TaskTypeEnum`
-* Added datatype `EngineeringTaskStruct`
-* Added datatype `LayMinefieldTaskStruct`
-* Added datatype `ClearEngineeringTaskStruct`
-* Added datatype `CreateBreachTaskStruct`
-* Added datatype `EstablishCheckpointTaskStruct`
-* Added datatype `CreateObstacleTaskStruct`
-* Added datatype `TaskDefinitionVariantStruct`
+ 
+* Removed datatype `GeoLocationReferenceVariant` 
+* Added datatype `TaskTypeEnum` 
+* Added datatype `EngineeringTaskStruct` 
+* Added datatype `LayMinefieldTaskStruct` 
+* Added datatype `ClearEngineeringTaskStruct` 
+* Added datatype `CreateBreachTaskStruct` 
+* Added datatype `EstablishCheckpointTaskStruct` 
+* Added datatype `CreateObstacleTaskStruct` 
+* Added datatype `TaskDefinitionVariantStruct` 
 * Added datatype `TaskProgressVariantStruct`</semantics>
         </note>
     </notes>
