@@ -435,7 +435,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <dataType>CreateObstacleTaskStruct</dataType>
                     <semantics>Task parameters.</semantics>
                 </alternative>
-                <encoding>HLAvariantRecord</encoding>
+                <encoding>HLAextendableVariantRecord</encoding>
                 <semantics>Variant record for task definition data.</semantics>
             </variantRecordData>
             <variantRecordData>
@@ -448,7 +448,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <dataType>ElapsedTimeProgress</dataType>
                     <semantics>Keeps track of elapesed time.</semantics>
                 </alternative>
-                <encoding>HLAvariantRecord</encoding>
+                <encoding>HLAextendableVariantRecord</encoding>
                 <semantics>Variant record for task progress data.</semantics>
             </variantRecordData>
         </variantRecordDataTypes>
@@ -467,7 +467,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
 * Added `LinearObject` attribute `Points` 
 * Added `EnvironmentObject` attribute `HostObject` 
 * Added object class `ArealBreach` 
-
+ 
  
 * Added interaction class `CreateBreach` 
 * Added interaction class `EstablishCheckpoint` 
