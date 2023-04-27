@@ -399,6 +399,21 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <semantics>Area of the obstacle.</semantics>
                 </field>
             </fixedRecordData>
+            <fixedRecordData>
+                <name>EngineeringTaskProgress</name>
+                <encoding>HLAfixedRecord</encoding>
+                <semantics>Task progress data for all Engineering tasks.</semantics>
+                <field>
+                    <name>EngineeringObjectId</name>
+                    <dataType>UUID</dataType>
+                    <semantics>The engineering object this progress is conncted to.</semantics>
+                </field>
+                <field>
+                    <name>Duration</name>
+                    <dataType>TimeMillisecondInt64</dataType>
+                    <semantics>Keeps track of elapesed time.</semantics>
+                </field>
+            </fixedRecordData>
         </fixedRecordDataTypes>
         <variantRecordDataTypes>
             <variantRecordData>
@@ -445,8 +460,8 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                 <alternative>
                     <enumerator>ClearEngineering, CreateBreach, EstablishCheckpoint, CreateObstacle, LayMinefield</enumerator>
                     <name>ElapsedEngineeringTime</name>
-                    <dataType>ElapsedTimeProgress</dataType>
-                    <semantics>Keeps track of elapesed time.</semantics>
+                    <dataType>EngineeringTaskProgress</dataType>
+                    <semantics>Keeps track of EngineeringId of the object being worked on and elapesed time.</semantics>
                 </alternative>
                 <encoding>HLAextendableVariantRecord</encoding>
                 <semantics>Variant record for task progress data.</semantics>
@@ -484,7 +499,8 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
 * Added datatype `EstablishCheckpointTaskStruct` 
 * Added datatype `CreateObstacleTaskStruct` 
 * Added datatype `TaskDefinitionVariantStruct` 
-* Added datatype `TaskProgressVariantStruct`</semantics>
+* Added datatype `TaskProgressVariantStruct`
+* Added datatype `EngineeringTaskProgress`</semantics>
         </note>
     </notes>
 </objectModel>
