@@ -137,7 +137,6 @@ Note that only datatypes defined in this FOM Module are listed below. Please ref
 |EngineeringTaskStruct|Task parameters.|
 |EstablishCheckpointTaskStruct|Task parameters.|
 |LayMinefieldTaskStruct|Task parameters.|
-|EngineeringTaskProgress| Task progress.|
 |TaskDefinitionVariantRecord|Variant record for task definition data.|
 |TaskProgressVariantRecord|Variant record for task progress data.|
 |TaskTypeEnum|Task types.|
@@ -156,7 +155,6 @@ Note that only datatypes defined in this FOM Module are listed below. Please ref
 |EngineeringTaskStruct|EngineeringObjectId, Name, Duration|Task parameters.|
 |EstablishCheckpointTaskStruct|EngineeringTask, Location, Radius, DelayTime|Task parameters.|
 |LayMinefieldTaskStruct|EngineeringTask, MineType, MineCount, Area|Task parameters.|
-|EngineeringTaskProgress| EngineeringObjectId, ElapsedTime|Task progress.|
         
 ### Variant Record Datatypes
 |Name|Discriminant (Datatype)|Alternatives|Semantics|

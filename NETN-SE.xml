@@ -409,29 +409,9 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <semantics>The engineering object this progress is conncted to.</semantics>
                 </field>
                 <field>
-                    <name>ElapsedTime</name>
+                    <name>Duration</name>
                     <dataType>TimeMillisecondInt64</dataType>
                     <semantics>Keeps track of elapesed time.</semantics>
-                </field>
-            </fixedRecordData>
-            <fixedRecordData>
-                <name>CreateBreachTaskStruct</name>
-                <encoding>HLAfixedRecord</encoding>
-                <semantics>Task parameters.</semantics>
-                <field>
-                    <name>EngineeringTask</name>
-                    <dataType>EngineeringTaskStruct</dataType>
-                    <semantics>Common engineering task parameters.</semantics>
-                </field>
-                <field>
-                    <name>EngineeringObject</name>
-                    <dataType>UUID</dataType>
-                    <semantics>Reference to the engineering object to breach.</semantics>
-                </field>
-                <field>
-                    <name>Area</name>
-                    <dataType>LocationStructArray</dataType>
-                    <semantics>The breach area.</semantics>
                 </field>
             </fixedRecordData>
         </fixedRecordDataTypes>

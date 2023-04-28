@@ -35,4 +35,4 @@
 * Added datatype `CreateObstacleTaskStruct` 
 * Added datatype `TaskDefinitionVariantStruct` 
 * Added datatype `TaskProgressVariantStruct`
-* Added datatype `EngineeringTaskProgress`
+
