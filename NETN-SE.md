@@ -82,6 +82,7 @@ EstablishCheckpoint-->RequestTask
 LayMinefield-->RequestTask
 CreateObstacle-->RequestTask
 ClearEngineering-->RequestTask
+EstablishObservationPost-->RequestTask
 ```
 
 ### CreateBreach
@@ -124,6 +125,14 @@ Requests a simulated entity to clear/remove an engineering object. The clearing 
 |---|---|---|
 |TaskParameters|ClearEngineeringTaskStruct|Required: Task parameters.|
 
+### EstablishObservationPost
+
+Requests a simulated entity to establish a observation post.
+
+|Parameter|Datatype|Semantics|
+|---|---|---|
+|TaskParameters|EstablishObservationPostTaskStruct|Required: Task parameters.|
+
 ## Datatypes
 
 Note that only datatypes defined in this FOM Module are listed below. Please refer to FOM Modules on which this module depends for other referenced datatypes.
@@ -137,6 +146,7 @@ Note that only datatypes defined in this FOM Module are listed below. Please ref
 |EngineeringTaskStruct|Task parameters.|
 |EstablishCheckpointTaskStruct|Task parameters.|
 |LayMinefieldTaskStruct|Task parameters.|
+|EstablishObservationPostTaskStruct|Task parameters|
 |TaskDefinitionVariantRecord|Variant record for task definition data.|
 |TaskProgressVariantRecord|Variant record for task progress data.|
 |TaskTypeEnum|Task types.|
@@ -155,10 +165,11 @@ Note that only datatypes defined in this FOM Module are listed below. Please ref
 |EngineeringTaskStruct|EngineeringObjectId, Name, Duration|Task parameters.|
 |EstablishCheckpointTaskStruct|EngineeringTask, Location, Radius, DelayTime|Task parameters.|
 |LayMinefieldTaskStruct|EngineeringTask, MineType, MineCount, Area|Task parameters.|
+|EstablishObservationPostTaskStruct|EngineeringTask, Location|Task parameters.|
         
 ### Variant Record Datatypes
 |Name|Discriminant (Datatype)|Alternatives|Semantics|
 |---|---|---|---|
-|TaskDefinitionVariantRecord|TaskType (TaskTypeEnum)|ClearEngineering, LayMinefield, CreateBreach, EstablishCheckpoint, CreateObstacle|Variant record for task definition data.|
+|TaskDefinitionVariantRecord|TaskType (TaskTypeEnum)|ClearEngineering, LayMinefield, CreateBreach, EstablishCheckpoint, CreateObstacle, EstablishObservationPost|Variant record for task definition data.|
 |TaskProgressVariantRecord|TaskType (TaskTypeEnum)|ElapsedEngineeringTime|Variant record for task progress data.|
     

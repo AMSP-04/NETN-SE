@@ -151,6 +151,33 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                             <semantics>Required. The time that an entity shall wait at the checkpoint before passing. The time is a nominal value; models can use this for modifying delay time for different types of entities, e.g. add or subtract a value or multiply with a factor dependent on the simulation entity type.</semantics>
                         </attribute>
                     </objectClass>
+                    <objectClass>
+                        <name>ObservationPost</name>
+                        <sharing>PublishSubscribe</sharing>
+                        <semantics>A ObservationPost defines a location where a simulated entity can observe an area.</semantics>
+                        <attribute>
+                            <name>OperatorId</name>
+                            <dataType>UUID</dataType>
+                            <updateType>NA</updateType>
+                            <updateCondition></updateCondition>
+                            <ownership>NoTransfer</ownership>
+                            <sharing>PublishSubscribe</sharing>
+                            <transportation>HLAreliable</transportation>
+                            <order>Receive</order>
+                            <semantics>Required. Reference to the unit operating this observation post.</semantics>
+                        </attribute>
+                        <attribute>
+                            <name>ObservationArea</name>
+                            <dataType>WorldLocationStructLengthlessArray</dataType>
+                            <updateType>NA</updateType>
+                            <updateCondition></updateCondition>
+                            <ownership>NoTransfer</ownership>
+                            <sharing>PublishSubscribe</sharing>
+                            <transportation>HLAreliable</transportation>
+                            <order>Receive</order>
+                            <semantics>Optional. The area to be observed.</semantics>
+                        </attribute>
+                    </objectClass>
                 </objectClass>
                 <objectClass>
                     <name>LinearObject</name>
@@ -246,6 +273,32 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                             <semantics>Required: Task parameters.</semantics>
                         </parameter>
                     </interactionClass>
+                    <interactionClass>
+                        <name>EstablishObservationPost</name>
+                        <sharing>PublishSubscribe</sharing>
+                        <transportation>HLAreliable</transportation>
+                        <order>Receive</order>
+                        <semantics>Requests a simulated entity to establish a observation post.</semantics>
+                        <parameter>
+                            <name>TaskParameters</name>
+                            <dataType>EstablishObservationPostTaskStruct</dataType>
+                            <semantics>Required. Task parameters.</semantics>
+                        </parameter>
+                    </interactionClass>
+                    <interactionClass>
+                        <name>OperateObservationPost</name>
+                        <sharing>Neither</sharing>
+                        <transportation>HLAreliable</transportation>
+                        <order>Receive</order>
+                        <semantics></semantics>
+                    </interactionClass>
+                    <interactionClass>
+                        <name>OperateObservationPost</name>
+                        <sharing>Neither</sharing>
+                        <transportation>HLAreliable</transportation>
+                        <order>Receive</order>
+                        <semantics></semantics>
+                    </interactionClass>
                 </interactionClass>
             </interactionClass>
         </interactionClass>
@@ -275,6 +328,10 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                 <enumerator>
                     <name>CreateObstacle</name>
                     <value>405</value>
+                </enumerator>
+                <enumerator>
+                    <name>EstablishObservationPost</name>
+                    <value>406</value>
                 </enumerator>
             </enumeratedData>
         </enumeratedDataTypes>
@@ -399,6 +456,21 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <semantics>Area of the obstacle.</semantics>
                 </field>
             </fixedRecordData>
+            <fixedRecordData>
+                <name>EstablishObservationPostTaskStruct</name>
+                <encoding>HLAfixedRecord</encoding>
+                <semantics>Task parameters.</semantics>
+                <field>
+                    <name>EngineeringTask</name>
+                    <dataType>EngineeringTaskStruct</dataType>
+                    <semantics>Common engineering task parameters.</semantics>
+                </field>
+                <field>
+                    <name>Location</name>
+                    <dataType>LocationStruct</dataType>
+                    <semantics>Location of the ObservationPost.</semantics>
+                </field>
+            </fixedRecordData>
         </fixedRecordDataTypes>
         <variantRecordDataTypes>
             <variantRecordData>
@@ -433,6 +505,12 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <enumerator>CreateObstacle</enumerator>
                     <name>CreateObstacle</name>
                     <dataType>CreateObstacleTaskStruct</dataType>
+                    <semantics>Task parameters.</semantics>
+                </alternative>
+                <alternative>
+                    <enumerator>EstablishObservationPost</enumerator>
+                    <name>EstablishObservationPost</name>
+                    <dataType>EstablishObservationPostTaskStruct</dataType>
                     <semantics>Task parameters.</semantics>
                 </alternative>
                 <encoding>HLAextendableVariantRecord</encoding>
