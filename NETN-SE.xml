@@ -285,20 +285,6 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                             <semantics>Required. Task parameters.</semantics>
                         </parameter>
                     </interactionClass>
-                    <interactionClass>
-                        <name>OperateObservationPost</name>
-                        <sharing>Neither</sharing>
-                        <transportation>HLAreliable</transportation>
-                        <order>Receive</order>
-                        <semantics></semantics>
-                    </interactionClass>
-                    <interactionClass>
-                        <name>OperateObservationPost</name>
-                        <sharing>Neither</sharing>
-                        <transportation>HLAreliable</transportation>
-                        <order>Receive</order>
-                        <semantics></semantics>
-                    </interactionClass>
                 </interactionClass>
             </interactionClass>
         </interactionClass>
