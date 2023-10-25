@@ -13,7 +13,7 @@
 * Establishing and representing checkpoints
 * Laying and breaching minefields and generic obstacles</useLimitation>
         <useHistory>v1.0 - Developed by MSG-163 for NETN FOM v3.0</useHistory>
-        <useHistory notes="netn-se_1">v2.0 - Developed by MSG-191 for NATO FOM v4.0</useHistory>
+        <useHistory notes="netn-se_1">v2.0 - Developed by MSG-191 for NETN FOM v4.0</useHistory>
         <poc>
             <pocType>Release authority</pocType>
             <pocName>NATO Modelling and Simulation Group</pocName>

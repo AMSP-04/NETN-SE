@@ -4,7 +4,7 @@
 
 
 
-### v2.0 - Developed by MSG-191 for NATO FOM v4.0
+### v2.0 - Developed by MSG-191 for NETN FOM v4.0
 
 * Replaced object class `SE_GeoObject` with `EnvironmentObject` 
 * Replaced object class `Location` with `PointObject` 
