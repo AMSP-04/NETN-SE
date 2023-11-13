@@ -63,11 +63,11 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                     <sharing>PublishSubscribe</sharing>
                     <transportation>HLAreliable</transportation>
                     <order>Receive</order>
-                    <semantics>Optional. The name of the EnvironmentObject.</semantics>
+                    <semantics>Optional. A name of the EnvironmentObject.</semantics>
                 </attribute>
                 <attribute>
-                    <name>SymbolId</name>
-                    <dataType>SymbolIdentifier</dataType>
+                    <name>Symbol</name>
+                    <dataType>SymbolStruct</dataType>
                     <updateType>Conditional</updateType>
                     <updateCondition>On change</updateCondition>
                     <ownership>NoTransfer</ownership>
@@ -156,10 +156,10 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                         <sharing>PublishSubscribe</sharing>
                         <semantics>A ObservationPost defines a location where a simulated entity can observe an area.</semantics>
                         <attribute>
-                            <name>OperatorId</name>
+                            <name>Operator</name>
                             <dataType>UUID</dataType>
-                            <updateType>NA</updateType>
-                            <updateCondition></updateCondition>
+                            <updateType>Conditional</updateType>
+                            <updateCondition>On change</updateCondition>
                             <ownership>NoTransfer</ownership>
                             <sharing>PublishSubscribe</sharing>
                             <transportation>HLAreliable</transportation>
@@ -169,8 +169,8 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                         <attribute>
                             <name>ObservationArea</name>
                             <dataType>WorldLocationStructLengthlessArray</dataType>
-                            <updateType>NA</updateType>
-                            <updateCondition></updateCondition>
+                            <updateType>Conditional</updateType>
+                            <updateCondition>On change</updateCondition>
                             <ownership>NoTransfer</ownership>
                             <sharing>PublishSubscribe</sharing>
                             <transportation>HLAreliable</transportation>
