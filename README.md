@@ -3,7 +3,7 @@
 
 |Version| Date| Dependencies|
 |---|---|---|
-|2.0|2023-03-30|RPR-SE, NETN-ETR|
+|2.0|2023-11-19|RPR-SE, NETN-ETR|
 
 > [Full Documentation](NETN-SE.md)
 

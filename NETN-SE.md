@@ -2,7 +2,7 @@
 # NETN-SE
 |Version| Date| Dependencies|
 |---|---|---|
-|2.0|2023-03-30|RPR-SE, NETN-ETR|
+|2.0|2023-11-19|RPR-SE, NETN-ETR|
 
 The purpose of the NATO Education and Training Network Synthetic Environment Module (NETN-SE) is to provide a standard way to exchange simulation data for objects in the synthetic environment other than simulated entities such as `Platform` or `AggregateEntity` objects.
 
@@ -24,6 +24,7 @@ PointObject-->EnvironmentObject
 LinearObject-->EnvironmentObject
 ArealObject-->EnvironmentObject
 Checkpoint-->PointObject
+ObservationPost-->PointObject
 ArealBreach-->ArealObject
 ```
 
@@ -33,8 +34,8 @@ A base class of environment point, linear, or areal object classes.
 
 |Attribute|Datatype|Semantics|
 |---|---|---|
-|Name|HLAunicodeString|Optional. The name of the EnvironmentObject.|
-|SymbolId|SymbolIdentifier|Optional. A symbol identifier.|
+|Name|HLAunicodeString|Optional. A name of the EnvironmentObject.|
+|Symbol|SymbolStruct|Optional. A symbol identifier.|
 |Status|ActiveStatusEnum8|Optional. Specifies if the EnvironmentObject is considered active in the simulation. An inactive object should not affect other simulation models. The default value is 1 (Active).|
 |DamageState|DamageStatusEnhancedEnum32|Optional. The damage state of an EnvironmentObject. The default value is 0 (NoDamage).|
 |Comment|HLAunicodeString|Optional. A descriptive text comment.|
@@ -56,6 +57,15 @@ A CheckPoint defines a location where simulated entities' ground movement should
 |---|---|---|
 |DelayTime|TimeMillisecondInt64|Required. The time that an entity shall wait at the checkpoint before passing. The time is a nominal value; models can use this for modifying delay time for different types of entities, e.g. add or subtract a value or multiply with a factor dependent on the simulation entity type.|
 
+### ObservationPost
+
+A ObservationPost defines a location where a simulated entity can observe an area.
+
+|Attribute|Datatype|Semantics|
+|---|---|---|
+|Operator|UUID|Required. Reference to the unit operating this observation post.|
+|ObservationArea|WorldLocationStructLengthlessArray|Optional. The area to be observed.|
+
 ### LinearObject
 
 A synthetic environment object that has size and an orientation and is geometrically anchored to the terrain with one point.
@@ -75,15 +85,25 @@ Note that inherited and dependency parameters are not included in the descriptio
 
 ```mermaid
 graph RL
-ETR_Task-->HLAinteractionRoot
-RequestTask-->ETR_Task
-CreateBreach-->RequestTask
-EstablishCheckpoint-->RequestTask
-LayMinefield-->RequestTask
-CreateObstacle-->RequestTask
-ClearEngineering-->RequestTask
-EstablishObservationPost-->RequestTask
+SMC_EntityControl-->HLAinteractionRoot
+Task-->SMC_EntityControl
+CreateBreach-->Task
+EstablishCheckpoint-->Task
+LayMinefield-->Task
+CreateObstacle-->Task
+ClearEngineering-->Task
+EstablishObservationPost-->Task
 ```
+
+### SMC_EntityControl
+
+
+
+
+### Task
+
+
+
 
 ### CreateBreach
 
@@ -131,7 +151,7 @@ Requests a simulated entity to establish a observation post.
 
 |Parameter|Datatype|Semantics|
 |---|---|---|
-|TaskParameters|EstablishObservationPostTaskStruct|Required: Task parameters.|
+|TaskParameters|EstablishObservationPostTaskStruct|Required. Task parameters.|
 
 ## Datatypes
 
@@ -144,17 +164,17 @@ Note that only datatypes defined in this FOM Module are listed below. Please ref
 |CreateBreachTaskStruct|Task parameters.|
 |CreateObstacleTaskStruct|Task parameters.|
 |EngineeringTaskStruct|Task parameters.|
+|EntityControlActionEnum|Control actions for entities.|
 |EstablishCheckpointTaskStruct|Task parameters.|
+|EstablishObservationPostTaskStruct|Task parameters.|
 |LayMinefieldTaskStruct|Task parameters.|
-|EstablishObservationPostTaskStruct|Task parameters|
 |TaskDefinitionVariantRecord|Variant record for task definition data.|
 |TaskProgressVariantRecord|Variant record for task progress data.|
-|TaskTypeEnum|Task types.|
         
 ### Enumerated Datatypes
 |Name|Representation|Semantics|
 |---|---|---|
-|TaskTypeEnum|HLAinteger32BE|Task types.|
+|EntityControlActionEnum|HLAinteger32BE|Control actions for entities.|
         
 ### Fixed Record Datatypes
 |Name|Fields|Semantics|
@@ -164,12 +184,12 @@ Note that only datatypes defined in this FOM Module are listed below. Please ref
 |CreateObstacleTaskStruct|EngineeringTask, Area|Task parameters.|
 |EngineeringTaskStruct|EngineeringObjectId, Name, Duration|Task parameters.|
 |EstablishCheckpointTaskStruct|EngineeringTask, Location, Radius, DelayTime|Task parameters.|
-|LayMinefieldTaskStruct|EngineeringTask, MineType, MineCount, Area|Task parameters.|
 |EstablishObservationPostTaskStruct|EngineeringTask, Location|Task parameters.|
+|LayMinefieldTaskStruct|EngineeringTask, MineType, MineCount, Area|Task parameters.|
         
 ### Variant Record Datatypes
 |Name|Discriminant (Datatype)|Alternatives|Semantics|
 |---|---|---|---|
-|TaskDefinitionVariantRecord|TaskType (TaskTypeEnum)|ClearEngineering, LayMinefield, CreateBreach, EstablishCheckpoint, CreateObstacle, EstablishObservationPost|Variant record for task definition data.|
-|TaskProgressVariantRecord|TaskType (TaskTypeEnum)|ElapsedEngineeringTime|Variant record for task progress data.|
+|TaskDefinitionVariantRecord|TaskType (EntityControlActionEnum)|ClearEngineering, LayMinefield, CreateBreach, EstablishCheckpoint, CreateObstacle, EstablishObservationPost|Variant record for task definition data.|
+|TaskProgressVariantRecord|TaskType (EntityControlActionEnum)|ElapsedEngineeringTime|Variant record for task progress data.|
     

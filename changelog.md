@@ -17,7 +17,7 @@
 * Added `LinearObject` attribute `Points` 
 * Added `EnvironmentObject` attribute `HostObject` 
 * Added object class `ArealBreach` 
-
+ 
  
 * Added interaction class `CreateBreach` 
 * Added interaction class `EstablishCheckpoint` 
@@ -26,7 +26,7 @@
 * Added interaction class `ClearEngineering` 
  
 * Removed datatype `GeoLocationReferenceVariant` 
-* Added datatype `TaskTypeEnum` 
+* Added datatype `EntityControlActionEnum` 
 * Added datatype `EngineeringTaskStruct` 
 * Added datatype `LayMinefieldTaskStruct` 
 * Added datatype `ClearEngineeringTaskStruct` 

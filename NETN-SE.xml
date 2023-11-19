@@ -4,7 +4,7 @@
         <name>NETN-SE</name>
         <type>FOM</type>
         <version>2.0</version>
-        <modificationDate>2023-03-30</modificationDate>
+        <modificationDate>2023-11-19</modificationDate>
         <securityClassification>Not Classified</securityClassification>
         <purpose>The purpose of the NATO Education and Training Network Synthetic Environment Module (NETN-SE) is to provide a standard way to exchange simulation data for objects in the synthetic environment other than simulated entities such as `Platform` or `AggregateEntity` objects.</purpose>
         <applicationDomain>Simulation, Training</applicationDomain>
@@ -210,9 +210,9 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
         <interactionClass>
             <name>HLAinteractionRoot</name>
             <interactionClass>
-                <name>ETR_Task</name>
+                <name>SMC_EntityControl</name>
                 <interactionClass>
-                    <name>RequestTask</name>
+                    <name>Task</name>
                     <interactionClass>
                         <name>CreateBreach</name>
                         <sharing>PublishSubscribe</sharing>
@@ -292,9 +292,9 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
     <dataTypes>
         <enumeratedDataTypes>
             <enumeratedData>
-                <name>TaskTypeEnum</name>
+                <name>EntityControlActionEnum</name>
                 <representation>HLAinteger32BE</representation>
-                <semantics>Task types.</semantics>
+                <semantics>Control actions for entities.</semantics>
                 <enumerator>
                     <name>ClearEngineering</name>
                     <value>401</value>
@@ -462,7 +462,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
             <variantRecordData>
                 <name>TaskDefinitionVariantRecord</name>
                 <discriminant>TaskType</discriminant>
-                <dataType>TaskTypeEnum</dataType>
+                <dataType>EntityControlActionEnum</dataType>
                 <alternative>
                     <enumerator>ClearEngineering</enumerator>
                     <name>ClearEngineering</name>
@@ -505,7 +505,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
             <variantRecordData>
                 <name>TaskProgressVariantRecord</name>
                 <discriminant>TaskType</discriminant>
-                <dataType>TaskTypeEnum</dataType>
+                <dataType>EntityControlActionEnum</dataType>
                 <alternative>
                     <enumerator>ClearEngineering, CreateBreach, EstablishCheckpoint, CreateObstacle, LayMinefield</enumerator>
                     <name>ElapsedEngineeringTime</name>
@@ -540,7 +540,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
 * Added interaction class `ClearEngineering` 
  
 * Removed datatype `GeoLocationReferenceVariant` 
-* Added datatype `TaskTypeEnum` 
+* Added datatype `EntityControlActionEnum` 
 * Added datatype `EngineeringTaskStruct` 
 * Added datatype `LayMinefieldTaskStruct` 
 * Added datatype `ClearEngineeringTaskStruct` 
