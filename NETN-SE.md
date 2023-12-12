@@ -15,17 +15,28 @@ NETN-SE defines:
 
 ## Object Classes
 
-Note that inherited and dependency attributes are not included in the description of object classes.
-
 ```mermaid
-graph RL
-EnvironmentObject-->HLAobjectRoot
-PointObject-->EnvironmentObject
-LinearObject-->EnvironmentObject
-ArealObject-->EnvironmentObject
-Checkpoint-->PointObject
-ObservationPost-->PointObject
-ArealBreach-->ArealObject
+classDiagram 
+direction LR
+
+HLAobjectRoot <|-- EnvironmentObject
+EnvironmentObject <|-- PointObject
+EnvironmentObject <|-- LinearObject
+EnvironmentObject <|-- ArealObject
+EnvironmentObject : Comment
+EnvironmentObject : DamageState
+EnvironmentObject : HostObject
+EnvironmentObject : Name
+EnvironmentObject : Status
+EnvironmentObject : Symbol
+PointObject <|-- Checkpoint
+PointObject <|-- ObservationPost
+PointObject : Radius
+Checkpoint : DelayTime
+ObservationPost : ObservationArea
+ObservationPost : Operator
+LinearObject : Points
+ArealObject <|-- ArealBreach
 ```
 
 ### EnvironmentObject
@@ -34,12 +45,12 @@ A base class of environment point, linear, or areal object classes.
 
 |Attribute|Datatype|Semantics|
 |---|---|---|
-|Name|HLAunicodeString|Optional. A name of the EnvironmentObject.|
-|Symbol|SymbolStruct|Optional. A symbol identifier.|
-|Status|ActiveStatusEnum8|Optional. Specifies if the EnvironmentObject is considered active in the simulation. An inactive object should not affect other simulation models. The default value is 1 (Active).|
-|DamageState|DamageStatusEnhancedEnum32|Optional. The damage state of an EnvironmentObject. The default value is 0 (NoDamage).|
 |Comment|HLAunicodeString|Optional. A descriptive text comment.|
+|DamageState|DamageStatusEnhancedEnum32|Optional. The damage state of an EnvironmentObject. The default value is 0 (NoDamage).|
 |HostObject|UUID|Optional. Reference to the host object. Required when using Breach/Burst objects.|
+|Name|HLAunicodeString|Optional. A name of the EnvironmentObject.|
+|Status|ActiveStatusEnum8|Optional. Specifies if the EnvironmentObject is considered active in the simulation. An inactive object should not affect other simulation models. The default value is 1 (Active).|
+|Symbol|SymbolStruct|Optional. A symbol identifier.|
 
 ### PointObject
 
@@ -47,7 +58,13 @@ A synthetic environment object that is geometrically anchored to the terrain wit
 
 |Attribute|Datatype|Semantics|
 |---|---|---|
+|Comment|HLAunicodeString|Optional. A descriptive text comment.|
+|DamageState|DamageStatusEnhancedEnum32|Optional. The damage state of an EnvironmentObject. The default value is 0 (NoDamage).|
+|HostObject|UUID|Optional. Reference to the host object. Required when using Breach/Burst objects.|
+|Name|HLAunicodeString|Optional. A name of the EnvironmentObject.|
 |Radius|MeterFloat64|Optional. The radius of the point object.|
+|Status|ActiveStatusEnum8|Optional. Specifies if the EnvironmentObject is considered active in the simulation. An inactive object should not affect other simulation models. The default value is 1 (Active).|
+|Symbol|SymbolStruct|Optional. A symbol identifier.|
 
 ### Checkpoint
 
@@ -55,7 +72,14 @@ A CheckPoint defines a location where simulated entities' ground movement should
 
 |Attribute|Datatype|Semantics|
 |---|---|---|
+|Comment|HLAunicodeString|Optional. A descriptive text comment.|
+|DamageState|DamageStatusEnhancedEnum32|Optional. The damage state of an EnvironmentObject. The default value is 0 (NoDamage).|
 |DelayTime|TimeMillisecondInt64|Required. The time that an entity shall wait at the checkpoint before passing. The time is a nominal value; models can use this for modifying delay time for different types of entities, e.g. add or subtract a value or multiply with a factor dependent on the simulation entity type.|
+|HostObject|UUID|Optional. Reference to the host object. Required when using Breach/Burst objects.|
+|Name|HLAunicodeString|Optional. A name of the EnvironmentObject.|
+|Radius|MeterFloat64|Optional. The radius of the point object.|
+|Status|ActiveStatusEnum8|Optional. Specifies if the EnvironmentObject is considered active in the simulation. An inactive object should not affect other simulation models. The default value is 1 (Active).|
+|Symbol|SymbolStruct|Optional. A symbol identifier.|
 
 ### ObservationPost
 
@@ -63,8 +87,15 @@ A ObservationPost defines a location where a simulated entity can observe an are
 
 |Attribute|Datatype|Semantics|
 |---|---|---|
-|Operator|UUID|Required. Reference to the unit operating this observation post.|
+|Comment|HLAunicodeString|Optional. A descriptive text comment.|
+|DamageState|DamageStatusEnhancedEnum32|Optional. The damage state of an EnvironmentObject. The default value is 0 (NoDamage).|
+|HostObject|UUID|Optional. Reference to the host object. Required when using Breach/Burst objects.|
+|Name|HLAunicodeString|Optional. A name of the EnvironmentObject.|
 |ObservationArea|WorldLocationStructLengthlessArray|Optional. The area to be observed.|
+|Operator|UUID|Required. Reference to the unit operating this observation post.|
+|Radius|MeterFloat64|Optional. The radius of the point object.|
+|Status|ActiveStatusEnum8|Optional. Specifies if the EnvironmentObject is considered active in the simulation. An inactive object should not affect other simulation models. The default value is 1 (Active).|
+|Symbol|SymbolStruct|Optional. A symbol identifier.|
 
 ### LinearObject
 
@@ -72,38 +103,47 @@ A synthetic environment object that has size and an orientation and is geometric
 
 |Attribute|Datatype|Semantics|
 |---|---|---|
+|Comment|HLAunicodeString|Optional. A descriptive text comment.|
+|DamageState|DamageStatusEnhancedEnum32|Optional. The damage state of an EnvironmentObject. The default value is 0 (NoDamage).|
+|HostObject|UUID|Optional. Reference to the host object. Required when using Breach/Burst objects.|
+|Name|HLAunicodeString|Optional. A name of the EnvironmentObject.|
 |Points|LocationStructArray|Required. A path with at least 2 locations.|
+|Status|ActiveStatusEnum8|Optional. Specifies if the EnvironmentObject is considered active in the simulation. An inactive object should not affect other simulation models. The default value is 1 (Active).|
+|Symbol|SymbolStruct|Optional. A symbol identifier.|
 
 ### ArealBreach
 
 A cleared area within an obstacle allows simulated entities to move through the obstacle.
 
+|Attribute|Datatype|Semantics|
+|---|---|---|
+|Comment|HLAunicodeString|Optional. A descriptive text comment.|
+|DamageState|DamageStatusEnhancedEnum32|Optional. The damage state of an EnvironmentObject. The default value is 0 (NoDamage).|
+|HostObject|UUID|Optional. Reference to the host object. Required when using Breach/Burst objects.|
+|Name|HLAunicodeString|Optional. A name of the EnvironmentObject.|
+|Status|ActiveStatusEnum8|Optional. Specifies if the EnvironmentObject is considered active in the simulation. An inactive object should not affect other simulation models. The default value is 1 (Active).|
+|Symbol|SymbolStruct|Optional. A symbol identifier.|
 
 ## Interaction Classes
 
-Note that inherited and dependency parameters are not included in the description of interaction classes.
-
 ```mermaid
-graph RL
-SMC_EntityControl-->HLAinteractionRoot
-Task-->SMC_EntityControl
-CreateBreach-->Task
-EstablishCheckpoint-->Task
-LayMinefield-->Task
-CreateObstacle-->Task
-ClearEngineering-->Task
-EstablishObservationPost-->Task
+classDiagram 
+direction LR
+HLAinteractionRoot <|-- SMC_EntityControl
+SMC_EntityControl <|-- Task
+Task <|-- CreateBreach
+Task <|-- EstablishCheckpoint
+Task <|-- LayMinefield
+Task <|-- CreateObstacle
+Task <|-- ClearEngineering
+Task <|-- EstablishObservationPost
+CreateBreach : TaskParameters
+EstablishCheckpoint : TaskParameters
+LayMinefield : TaskParameters
+CreateObstacle : TaskParameters
+ClearEngineering : TaskParameters
+EstablishObservationPost : TaskParameters
 ```
-
-### SMC_EntityControl
-
-
-
-
-### Task
-
-
-
 
 ### CreateBreach
 
