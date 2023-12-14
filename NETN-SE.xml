@@ -13,7 +13,7 @@
 * Establishing and representing checkpoints
 * Laying and breaching minefields and generic obstacles</useLimitation>
         <useHistory>v1.0 - Developed by MSG-163 for NETN FOM v3.0</useHistory>
-        <useHistory notes="netn-se_1">v2.0 - Developed by MSG-191 for NETN FOM v4.0</useHistory>
+        <useHistory notes="netn-se_changelog_1">v2.0 - Developed by MSG-191 for NETN FOM v4.0</useHistory>
         <poc>
             <pocType>Release authority</pocType>
             <pocName>NATO Modelling and Simulation Group</pocName>
@@ -523,7 +523,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
     </dataTypes>
     <notes>
         <note>
-            <label>netn-se_1</label>
+            <label>netn-se_changelog_1</label>
             <semantics>* Replaced object class `SE_GeoObject` with `EnvironmentObject` 
 * Replaced object class `Location` with `PointObject` 
 * Replaced object class `Path` with `LinearObject` 
@@ -553,6 +553,10 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
 * Added datatype `CreateObstacleTaskStruct` 
 * Added datatype `TaskDefinitionVariantStruct` 
 * Added datatype `TaskProgressVariantStruct`</semantics>
+        </note>
+        <note>
+            <label>netn-se_overview</label>
+            <semantics></semantics>
         </note>
     </notes>
 </objectModel>
