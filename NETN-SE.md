@@ -4,13 +4,78 @@
 |---|---|---|
 |2.0|2024-03-05|RPR-SE, NETN-ETR, NETN-BASE|
 
-The purpose of the NATO Education and Training Network Synthetic Environment Module (NETN-SE) is to provide a standard way to exchange simulation data for objects in the synthetic environment other than simulated entities such as `Platform` or `AggregateEntity` objects.
+The purpose of the NATO Education and Training Network Synthetic Environment (NETN-SE) module is to provide a standard way to exchange simulation data for objects in the synthetic environment other than simulated entities such as `Platform` or `AggregateEntity` objects.
 
 The specification is based on IEEE 1516 High Level Architecture (HLA) Object Model Template (OMT) and supports interoperability in a federated simulation (federation) based on HLA.
 
-NETN-SE defines:
-* Establishing and representing checkpoints
-* Laying and breaching minefields and generic obstacles
+
+
+## Overview
+
+The NETN-SE module extends the RPR-SE module by defining:
+* Checkpoints
+* Observation posts
+* Minefields
+* Generic Obstacles (OtherArealObject)
+* Areal Breaches
+                
+```mermaid
+classDiagram 
+direction LR
+
+HLAobjectRoot <|-- EnvironmentObject
+HLAobjectRoot : UniqueId(NETN-BASE)
+EnvironmentObject <|-- PointObject
+EnvironmentObject <|-- LinearObject
+EnvironmentObject <|-- ArealObject
+EnvironmentObject : Comment
+EnvironmentObject : DamageState
+EnvironmentObject : HostObject
+EnvironmentObject : Name
+EnvironmentObject : Status
+EnvironmentObject : Symbol
+EnvironmentObject : ForceIdentifier(RPR-SE)
+EnvironmentObject : ObjectIdentifier(RPR-SE)
+EnvironmentObject : ObjectType(RPR-SE)
+PointObject <|-- Checkpoint
+PointObject <|-- ObservationPost
+PointObject : Radius
+PointObject : Location(RPR-SE)
+PointObject : Orientation(RPR-SE)
+Checkpoint : DelayTime
+ObservationPost : ObservationArea
+ObservationPost : Operator
+LinearObject : Points
+ArealObject <|-- ArealBreach
+ArealObject <|-- MinefieldObject
+ArealObject <|-- OtherArealObject
+ArealObject : PointsData(RPR-SE)
+
+```
+The NETN-SE module also provides extended NETN-ETR tasks related to engineering activities.
+
+```mermaid
+classDiagram 
+direction LR
+HLAinteractionRoot <|-- SMC_EntityControl
+HLAinteractionRoot : UniqueId(NETN-BASE)
+SMC_EntityControl <|-- Task
+SMC_EntityControl : Entity(NETN-SMC)
+Task <|-- CreateBreach
+Task <|-- EstablishCheckpoint
+Task <|-- LayMinefield
+Task <|-- CreateObstacle
+Task <|-- ClearEngineering
+Task <|-- EstablishObservationPost
+Task : TaskId(NETN-ETR)
+CreateBreach : TaskParameters
+EstablishCheckpoint : TaskParameters
+LayMinefield : TaskParameters
+CreateObstacle : TaskParameters
+ClearEngineering : TaskParameters
+EstablishObservationPost : TaskParameters
+```
+
 
 
 ## Object Classes
