@@ -10,72 +10,71 @@ The specification is based on IEEE 1516 High Level Architecture (HLA) Object Mod
 
 
 
-## Overview
-
-The NETN-SE module extends the RPR-SE module by defining:
-* Checkpoints
-* Observation posts
-* Minefields
-* Generic Obstacles (OtherArealObject)
-* Areal Breaches
-                
-```mermaid
+## Overview 
+ 
+The NETN-SE module extends the RPR-SE module by defining: 
+* Checkpoints 
+* Observation posts 
+* Minefields 
+* Generic Obstacles (OtherArealObject) 
+* Areal Breaches 
+ 
+```mermaid 
 classDiagram 
-direction LR
-
-HLAobjectRoot <|-- EnvironmentObject
-HLAobjectRoot : UniqueId(NETN-BASE)
-EnvironmentObject <|-- PointObject
-EnvironmentObject <|-- LinearObject
-EnvironmentObject <|-- ArealObject
-EnvironmentObject : Comment
-EnvironmentObject : DamageState
-EnvironmentObject : HostObject
-EnvironmentObject : Name
-EnvironmentObject : Status
-EnvironmentObject : Symbol
-EnvironmentObject : ForceIdentifier(RPR-SE)
-EnvironmentObject : ObjectIdentifier(RPR-SE)
-EnvironmentObject : ObjectType(RPR-SE)
-PointObject <|-- Checkpoint
-PointObject <|-- ObservationPost
-PointObject : Radius
-PointObject : Location(RPR-SE)
-PointObject : Orientation(RPR-SE)
-Checkpoint : DelayTime
-ObservationPost : ObservationArea
-ObservationPost : Operator
-LinearObject : Points
-ArealObject <|-- ArealBreach
-ArealObject <|-- MinefieldObject
-ArealObject <|-- OtherArealObject
-ArealObject : PointsData(RPR-SE)
-
-```
-The NETN-SE module also provides extended NETN-ETR tasks related to engineering activities.
-
-```mermaid
+direction LR 
+ 
+HLAobjectRoot <|-- EnvironmentObject 
+HLAobjectRoot : UniqueId(NETN-BASE) 
+EnvironmentObject <|-- PointObject 
+EnvironmentObject <|-- LinearObject 
+EnvironmentObject <|-- ArealObject 
+EnvironmentObject : Comment 
+EnvironmentObject : DamageState 
+EnvironmentObject : HostObject 
+EnvironmentObject : Name 
+EnvironmentObject : Status 
+EnvironmentObject : Symbol 
+EnvironmentObject : ForceIdentifier(RPR-SE) 
+EnvironmentObject : ObjectIdentifier(RPR-SE) 
+EnvironmentObject : ObjectType(RPR-SE) 
+PointObject <|-- Checkpoint 
+PointObject <|-- ObservationPost 
+PointObject : Radius 
+PointObject : Location(RPR-SE) 
+PointObject : Orientation(RPR-SE) 
+Checkpoint : DelayTime 
+ObservationPost : ObservationArea 
+ObservationPost : Operator 
+LinearObject : Points 
+ArealObject <|-- ArealBreach 
+ArealObject <|-- MinefieldObject 
+ArealObject <|-- OtherArealObject 
+ArealObject : PointsData(RPR-SE) 
+ 
+``` 
+The NETN-SE module also provides extended NETN-ETR tasks related to engineering activities. 
+ 
+```mermaid 
 classDiagram 
-direction LR
-HLAinteractionRoot <|-- SMC_EntityControl
-HLAinteractionRoot : UniqueId(NETN-BASE)
-SMC_EntityControl <|-- Task
-SMC_EntityControl : Entity(NETN-SMC)
-Task <|-- CreateBreach
-Task <|-- EstablishCheckpoint
-Task <|-- LayMinefield
-Task <|-- CreateObstacle
-Task <|-- ClearEngineering
-Task <|-- EstablishObservationPost
-Task : TaskId(NETN-ETR)
-CreateBreach : TaskParameters
-EstablishCheckpoint : TaskParameters
-LayMinefield : TaskParameters
-CreateObstacle : TaskParameters
-ClearEngineering : TaskParameters
-EstablishObservationPost : TaskParameters
+direction LR 
+HLAinteractionRoot <|-- SMC_EntityControl 
+HLAinteractionRoot : UniqueId(NETN-BASE) 
+SMC_EntityControl <|-- Task 
+SMC_EntityControl : Entity(NETN-SMC) 
+Task <|-- CreateBreach 
+Task <|-- EstablishCheckpoint 
+Task <|-- LayMinefield 
+Task <|-- CreateObstacle 
+Task <|-- ClearEngineering 
+Task <|-- EstablishObservationPost 
+Task : TaskId(NETN-ETR) 
+CreateBreach : TaskParameters 
+EstablishCheckpoint : TaskParameters 
+LayMinefield : TaskParameters 
+CreateObstacle : TaskParameters 
+ClearEngineering : TaskParameters 
+EstablishObservationPost : TaskParameters 
 ```
-
 
 
 ## Object Classes
