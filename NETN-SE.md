@@ -332,7 +332,7 @@ Note that only datatypes defined in this FOM Module are listed below. Please ref
 |CreateBreachTaskStruct|Task parameters.|
 |CreateObstacleTaskStruct|Task parameters.|
 |EngineeringTaskStruct|Task parameters.|
-|EntityControlActionEnum|Control actions for entities.|
+|EntityControlActionEnum|Enumeration of Entity Control Actions. The datatype is expected to be extended in specific modules defining additional actions.|
 |EstablishCheckpointTaskStruct|Task parameters.|
 |EstablishObservationPostTaskStruct|Task parameters.|
 |LayMinefieldTaskStruct|Task parameters.|
@@ -342,7 +342,7 @@ Note that only datatypes defined in this FOM Module are listed below. Please ref
 ### Enumerated Datatypes
 |Name|Representation|Semantics|
 |---|---|---|
-|EntityControlActionEnum|HLAinteger32BE|Control actions for entities.|
+|EntityControlActionEnum|HLAinteger32BE|Enumeration of Entity Control Actions. The datatype is expected to be extended in specific modules defining additional actions.|
         
 ### Fixed Record Datatypes
 |Name|Fields|Semantics|
