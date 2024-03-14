@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <objectModel xsi:schemaLocation="http://standards.ieee.org/IEEE1516-2010 http://standards.ieee.org/downloads/1516/1516.2-2010/IEEE1516-DIF-2010.xsd" xmlns="http://standards.ieee.org/IEEE1516-2010" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <modelIdentification>
+    <modelIdentification notes="netn-se_overview">
         <name>NETN-SE</name>
         <type>FOM</type>
         <version>2.0</version>
-        <modificationDate>2023-11-19</modificationDate>
+        <modificationDate>2024-03-10</modificationDate>
         <securityClassification>Not Classified</securityClassification>
-        <purpose>The purpose of the NATO Education and Training Network Synthetic Environment Module (NETN-SE) is to provide a standard way to exchange simulation data for objects in the synthetic environment other than simulated entities such as `Platform` or `AggregateEntity` objects.</purpose>
+        <purpose></purpose>
         <applicationDomain>Simulation, Training</applicationDomain>
-        <description>The specification is based on IEEE 1516 High Level Architecture (HLA) Object Model Template (OMT) and supports interoperability in a federated simulation (federation) based on HLA.</description>
-        <useLimitation>NETN-SE defines:
-* Establishing and representing checkpoints
-* Laying and breaching minefields and generic obstacles</useLimitation>
+        <description>The NATO Education and Training Network Synthetic Environment module (NETN-SE) provides a standard way to exchange simulation data for objects in the synthetic environment other than simulated entities such as `Platform` or `AggregateEntity` objects.</description>
+        <useLimitation></useLimitation>
         <useHistory>v1.0 - Developed by MSG-163 for NETN FOM v3.0</useHistory>
         <useHistory notes="netn-se_changelog_1">v2.0 - Developed by MSG-191 for NETN FOM v4.0</useHistory>
         <poc>
@@ -206,6 +204,16 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
                         <sharing>PublishSubscribe</sharing>
                         <semantics>A cleared area within an obstacle allows simulated entities to move through the obstacle.</semantics>
                     </objectClass>
+                    <objectClass>
+                        <name>MinefieldObject</name>
+                        <sharing>PublishSubscribe</sharing>
+                        <semantics>A mine, mine weapon, mine row, mine strip, mine lane, mine marker or minefield, defined as an areal environment object.</semantics>
+                    </objectClass>
+                    <objectClass>
+                        <name>OtherArealObject</name>
+                        <sharing>PublishSubscribe</sharing>
+                        <semantics>Areal objects other than Minefield objects.</semantics>
+                    </objectClass>
                 </objectClass>
             </objectClass>
         </objectClass>
@@ -298,7 +306,7 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
             <enumeratedData>
                 <name>EntityControlActionEnum</name>
                 <representation>HLAinteger32BE</representation>
-                <semantics>Control actions for entities.</semantics>
+                <semantics>Enumeration of Entity Control Actions. The datatype is expected to be extended in specific modules defining additional actions.</semantics>
                 <enumerator>
                     <name>ClearEngineering</name>
                     <value>401</value>
@@ -556,7 +564,17 @@ Above license gives you the right to use and redistribute the NETN FOM Module (X
         </note>
         <note>
             <label>netn-se_overview</label>
-            <semantics></semantics>
+            <semantics>## Overview 
+ 
+The NETN-SE module extends the RPR-SE module by defining: 
+* Checkpoints 
+* Observation posts 
+* Minefields 
+* Generic Obstacles (OtherArealObject) 
+* Areal Breaches 
+ 
+The NETN-SE module also provides extended NETN-ETR tasks related to engineering activities. 
+ </semantics>
         </note>
     </notes>
 </objectModel>

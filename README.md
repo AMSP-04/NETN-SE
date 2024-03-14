@@ -3,17 +3,15 @@
 
 |Version| Date| Dependencies|
 |---|---|---|
-|2.0|2023-11-19|RPR-SE, NETN-ETR|
+|2.0|2024-03-10|RPR-SE, NETN-ETR, NETN-BASE|
 
 > [Full Documentation](NETN-SE.md)
 
-The purpose of the NATO Education and Training Network Synthetic Environment Module (NETN-SE) is to provide a standard way to exchange simulation data for objects in the synthetic environment other than simulated entities such as `Platform` or `AggregateEntity` objects.
 
-The specification is based on IEEE 1516 High Level Architecture (HLA) Object Model Template (OMT) and supports interoperability in a federated simulation (federation) based on HLA.
 
-NETN-SE defines:
-* Establishing and representing checkpoints
-* Laying and breaching minefields and generic obstacles
+The NATO Education and Training Network Synthetic Environment module (NETN-SE) provides a standard way to exchange simulation data for objects in the synthetic environment other than simulated entities such as `Platform` or `AggregateEntity` objects.
+
+
 
 ## License
 
